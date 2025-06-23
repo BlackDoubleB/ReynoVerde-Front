@@ -1,8 +1,14 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/auth/login/login.component';
-import { HomeComponent } from './components/home/home.component';
-
+import { HomeComponent } from './features/home/home.component';
+import { privateGuard } from './components/core/auth.guard';
 export const routes: Routes = [
-    {path: '', component:HomeComponent},
-    {path: 'Login', component : LoginComponent}
+  { 
+    path: 'home', 
+    canActivate: [privateGuard()], 
+    component: HomeComponent 
+ },
+  {
+    path: 'auth',
+    loadChildren: () => import('./features/auth/auth.routes'),
+  },
 ];
