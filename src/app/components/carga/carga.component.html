@@ -1,0 +1,72 @@
+<div class="c-main bg-gray-800 h-screen w-full flex flex-col justify-center">
+  <div class="c-sub flex flex-col items-center gap-2">
+    <div class="c-icon flex gap-5">
+      <div class="item1 delay-1 bg-red-500 w-5 h-10 rounded-full"></div>
+      <div class="item1 delay-2 bg-yellow-400 w-5 h-10 rounded-full"></div>
+      <div class="item1 delay-3 bg-green-500 w-5 h-10 rounded-full"></div>
+      <div class="item1 delay-4 bg-gray-100 w-5 h-10 rounded-full"></div>
+    </div>
+    <p class="text-amber-50 flex">
+      Cargando Recursos
+      <span class="loading-text l-delay-1">.</span>
+      <span class="loading-text l-delay-2">.</span>
+      <span class="loading-text l-delay-3">.</span>
+    </p>
+  </div>
+</div>
+
+<style>
+  @keyframes loading {
+    0% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .item1 {
+    animation: loading 0.7s ease-in-out infinite;
+  }
+
+  .delay-1 {
+    animation-delay: 0s;
+  }
+
+  .delay-2 {
+    animation-delay: 0.2s;
+  }
+
+  .delay-3 {
+    animation-delay: 0.3s;
+  }
+
+  .delay-4 {
+    animation-delay: 0.4s;
+  }
+
+
+  @keyframes loading-text {
+    0% {color: white;}
+    50% {color: transparent;}
+    100% {color: white;}
+  }
+  .loading-text {
+     animation: loading-text 5s steps(60) infinite;
+  }
+  .l-delay-1{
+    animation-delay: 0s;
+  }
+    .l-delay-2{
+    animation-delay: 0.2s;
+  }
+    .l-delay-3{
+    animation-delay: 0.4s;
+  }
+
+</style>

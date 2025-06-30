@@ -1,12 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
+  HttpClient
 } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { IniciarSesion, RegistrarUsuario } from './account.interface';
-import { catchError, Observable, throwError } from 'rxjs';
+import {  Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,24 +16,20 @@ export class AuthService {
   public registrarUsuario(
     usuario: RegistrarUsuario
   ): Observable<RegistrarUsuario> {
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json',
-    //   }),
-    // };
-    return this.http.post<RegistrarUsuario>(this.URLbase+ '/register', usuario);
+    return this.http.post<RegistrarUsuario>(
+      this.URLbase + '/register',
+      usuario
+    );
   }
 
-  public iniciarSesion(
-    usuario: IniciarSesion
-  ): Observable<IniciarSesion> {
+  public iniciarSesion(usuario: IniciarSesion): Observable<IniciarSesion> {
     const httpOptions = {
-      // headers: new HttpHeaders({
-      //   'Content-Type': 'application/json',
-      // }),
-      withCredentials: true 
-      
+      withCredentials: true,
     };
-    return this.http.post<IniciarSesion>(`${this.URLbase}/login?useCookies=true`, usuario, httpOptions);
+    return this.http.post<IniciarSesion>(
+      `${this.URLbase}/login?useCookies=true`,
+      usuario,
+      httpOptions
+    );
   }
 }

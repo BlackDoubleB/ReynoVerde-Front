@@ -1,14 +1,21 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './features/home/home.component';
-import { privateGuard } from './components/core/auth.guard';
+import { LayoutComponent } from './features/dashboard/layout/layout.component';
+import { privateGuard } from './features/core/auth.guard';
+
+
 export const routes: Routes = [
-  { 
-    path: 'home', 
-    canActivate: [privateGuard()], 
-    component: HomeComponent 
- },
+  {
+    path: '',
+    component: LayoutComponent,
+    canActivate: [privateGuard],
+    loadChildren: () => import('./features/dashboard/dashboard.routes'),
+    title: 'home'
+   
+  },
   {
     path: 'auth',
     loadChildren: () => import('./features/auth/auth.routes'),
+    title: 'auth'
   },
+  
 ];

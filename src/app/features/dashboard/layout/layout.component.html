@@ -1,0 +1,28 @@
+<div class="min-h-screen m-5 font-[Poppins]">
+
+      <header class="m-5">
+        <nav class="flex justify-between items-center flex-wrap">
+            <ul class="flex gap-5 h-10 items-center">
+                <li>
+                    <a routerLink="/home" >Reyno Verde</a>
+                </li>
+                <li>
+                    <a routerLink="/home" routerLinkActive="activo">Home</a>
+                </li>
+                <li>
+                    <a routerLink="/about"  routerLinkActive="activo">About</a>
+                </li>
+            </ul>
+            <app-tema ></app-tema>
+         
+        </nav>
+    </header>
+    <main class="flex items-center justify-center" >
+        <div class="w-full max-w-[1200px] ">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+
+
+</div>
+

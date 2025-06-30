@@ -17,7 +17,7 @@ export default class LoginComponent {
     email: ['', { validators: [Validators.required, Validators.email] }],
     password: ['', { validators: [Validators.required] }]
   })
-  async iniciarSesion() {
+  iniciarSesion() {
   let usuarioForm = this.form.value;
       if (this.form.valid) {
         const usuario: IniciarSesion = {
