@@ -1,5 +1,45 @@
-<section >
-   <app-portada></app-portada>
-   <h1>Home</h1>
-   <app-clima-listar></app-clima-listar>
-</section>
+<div class="flex flex-col gap-24">
+  <app-portada></app-portada>
+
+  <section class="grid grid-cols-[0.5fr_1fr] gap-5">
+    <div class="flex flex-col gap-5">
+      <h4 class="font-bold text-3xl text-black">Las plantas más vendidas</h4>
+      <p class="text-gray-500">
+        La forma más fácil de llevar una vida saludable es comprando tus plantas
+        favoritas.
+      </p>
+      <button
+        class="bg-[#C1DCDC] py-2 px-  4 font-medium rounded-lg w-fit text-black"
+      >
+        Ver mas ->
+      </button>
+    </div>
+
+    <div class="flex justify-between">
+      @for(planta of imgVendidas; track planta.imagenUrl){
+      <app-card-1
+        [imagenUrl]="planta.imagenUrl"
+        [titulo]="planta.titulo"
+        [precio]="planta.precio"
+      ></app-card-1>
+      }@empty {
+      <p>Aun no hay plantas</p>
+      }
+    </div>
+  </section>
+  <app-about></app-about>
+
+  <div class="flex justify-between gap-5 text-center">
+    @for(planta of imgCategoria; track planta.imagenUrl){
+      <app-card-2
+        [imagenUrl]="planta.imagenUrl"
+        [categoria]="planta.categoria"
+        [descripcion]="planta.descripcion"
+      ></app-card-2>
+    }@empty {
+    <p>Aun no hay plantas</p>
+    }
+  </div>
+
+  <app-clima-listar></app-clima-listar>
+</div>
