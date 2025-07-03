@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-categoria-listar',
   imports: [],
   templateUrl: './categoria-listar.component.html',
-  styleUrl: './categoria-listar.component.css'
 })
-export class CategoriaListarComponent {
+export default class CategoriaListarComponent {
 
 }

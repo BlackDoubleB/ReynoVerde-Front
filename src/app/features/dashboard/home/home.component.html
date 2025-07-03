@@ -1,45 +1,38 @@
-<div class="flex flex-col gap-24">
+<div class="flex flex-col gap-20">
   <app-portada></app-portada>
 
-  <section class="grid grid-cols-[0.5fr_1fr] gap-5">
-    <div class="flex flex-col gap-5">
-      <h4 class="font-bold text-3xl text-black">Las plantas más vendidas</h4>
-      <p class="text-gray-500">
-        La forma más fácil de llevar una vida saludable es comprando tus plantas
-        favoritas.
-      </p>
-      <button
-        class="bg-[#C1DCDC] py-2 px-  4 font-medium rounded-lg w-fit text-black"
-      >
-        Ver mas ->
-      </button>
-    </div>
+  <div class="flex flex-col gap-40">
+    <section class="grid grid-cols-[0.5fr_1fr] gap-5">
+      <div class="flex flex-col gap-5">
+        <h4 class="font-bold text-3xl text-black">Las plantas más vendidas</h4>
+        <p class="text-gray-500">
+          La forma más fácil de llevar una vida saludable es comprando tus
+          plantas favoritas.
+        </p>
 
-    <div class="flex justify-between">
-      @for(planta of imgVendidas; track planta.imagenUrl){
-      <app-card-1
-        [imagenUrl]="planta.imagenUrl"
-        [titulo]="planta.titulo"
-        [precio]="planta.precio"
-      ></app-card-1>
-      }@empty {
-      <p>Aun no hay plantas</p>
-      }
-    </div>
-  </section>
-  <app-about></app-about>
+        <app-boton-redirigir
+          clasesExtras="bg-[#C1DCDC] text-black w-fit hover:bg-[#b3cece]"
+          texto="Ver mas"
+          ruta="/plantas"
+        ></app-boton-redirigir>
+      </div>
 
-  <div class="flex justify-between gap-5 text-center">
-    @for(planta of imgCategoria; track planta.imagenUrl){
-      <app-card-2
-        [imagenUrl]="planta.imagenUrl"
-        [categoria]="planta.categoria"
-        [descripcion]="planta.descripcion"
-      ></app-card-2>
-    }@empty {
-    <p>Aun no hay plantas</p>
-    }
+      <div class="flex justify-between">
+        @for(planta of imgVendidas; track planta.imagenUrl){
+        <app-card-1
+          [imagenUrl]="planta.imagenUrl"
+          [titulo]="planta.titulo"
+          [precio]="planta.precio"
+        ></app-card-1>
+        }@empty {
+        <p>Aun no hay plantas</p>
+        }
+      </div>
+    </section>
+    <app-about></app-about>
+    <app-home-categoria></app-home-categoria>
+   
+    <!-- <app-clima-listar></app-clima-listar> -->
   </div>
-
-  <app-clima-listar></app-clima-listar>
+   <app-home-comentarios></app-home-comentarios>
 </div>

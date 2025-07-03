@@ -8,7 +8,6 @@ import { CategoriaI } from '../categoria.interface';
   selector: 'app-categoria-crear',
   imports: [ReactiveFormsModule],
   templateUrl: './categoria-crear.component.html',
-  styleUrl: './categoria-crear.component.css'
 })
 export class CategoriaCrearComponent {
 

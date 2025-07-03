@@ -1,6 +1,5 @@
-<div class="min-h-screen m-5">
-
-      <header class="m-5">
+<div class="min-h-screen">
+      <header class="my-5 mx-10">
         <nav class="flex justify-between items-center flex-wrap">
             <ul class="flex gap-5 h-10 items-center">
                 <li>
@@ -10,14 +9,14 @@
                     <a routerLink="/home" routerLinkActive="activo">Home</a>
                 </li>
                 <li>
-                    <a routerLink="/about"  routerLinkActive="activo">About</a>
+                    <a routerLink="/plantas"  routerLinkActive="activo">Plantas</a>
                 </li>
             </ul>
             <app-tema ></app-tema>
          
         </nav>
     </header>
-    <main class="flex items-center justify-center" >
+    <main class="flex items-center justify-center overflow-x-hidden" >
         <div class="w-full max-w-[1200px] ">
             <router-outlet></router-outlet>
         </div>

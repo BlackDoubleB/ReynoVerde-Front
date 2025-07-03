@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-portada',
   imports: [],
-  templateUrl: './portada.component.html',
-  styleUrl: './portada.component.css'
+  templateUrl: './portada.component.html'
 })
 export class PortadaComponent {
 
