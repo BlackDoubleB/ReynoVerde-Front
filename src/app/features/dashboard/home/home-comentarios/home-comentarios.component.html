@@ -1,42 +1,20 @@
-<!-- <div class="flex flex-col gap-10 ">
-  <h3 class="text-black font-bold text-3xl">
-    ¿Qué dicen los clientes 
-    sobre ReynoVerde?
-  </h3>
-  <div class="rounded-3xl overflow-hidden">
-    <div class="flex gap-10 overflow-x-hidden">
-    @for (item of comentarios; track $index) {
-    <app-comentarios
-      [comentario]="item.comentario"
-      [imagen]="item.foto"
-      [nombreUsuario]="item.usuario"
-      [fecha]="item.fecha"
-    ></app-comentarios>
-    }
-  </div>
-  </div>
-</div> -->
 <div class="flex flex-col gap-10">
-  <h3 class="text-black font-bold text-3xl">
+  <h3 class="text-black dark:text-gray-100 font-bold text-xl sm:text-3xl">
     ¿Qué dicen los clientes sobre ReynoVerde?
   </h3>
 
-  <!-- Contenedor con difuminado a la derecha -->
-  <div class="relative rounded-3xl overflow-hidden">
-    <!-- Gradiente difuminado a la derecha -->
-    <div class="pointer-events-none absolute top-0 right-0 w-20 h-full z-10"
-         style="background: linear-gradient(to left, #fff, transparent);">
-    </div>
+  <div class="relative rounded-lg overflow-hidden">
 
-    <!-- Carrusel -->
-    <div class="flex gap-10 overflow-x-hidden pr-20 ">
+    <div class="flex gap-10 overflow-x-hidden ">
       @for (item of comentarios; track $index) {
-        <app-comentarios
+       <div class="bg-[#C1DCDC] dark:bg-[#1A2B2B]  p-5 shadow-md rounded-lg">
+         <app-comentarios
           [comentario]="item.comentario"
           [imagen]="item.foto"
           [nombreUsuario]="item.usuario"
           [fecha]="item.fecha"
         ></app-comentarios>
+       </div>
       }
     </div>
   </div>

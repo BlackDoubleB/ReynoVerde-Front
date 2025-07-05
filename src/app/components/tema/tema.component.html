@@ -1,10 +1,11 @@
 <button class="cursor-pointer">
   <div
-    class="cuerpo bg-gray-200   w-11 h-5 rounded-2xl relative"
+    class="cuerpo bg-gray-200  w-[42px] h-5 rounded-2xl relative"
     (click)="mover()"
   >
     <div
-      class="bg-[#C1DCDC] circulo rounded-full w-8 h-8 flex items-center justify-center absolute -top-[35%] z-10"
+      class="bg-[#C1DCDC] dark:bg-[#1A2B2B] circulo rounded-full w-8 h-8
+       flex items-center justify-center absolute -top-[35%] z-10"
       [ngClass]="{ esClaro: claro(), esOscuro: oscuro() }"
     >
       @if(claro()){
@@ -13,7 +14,7 @@
         width="1em"
         height="1em"
         viewBox="0 0 688 717"
-        class=" text-black"
+        class=" text-black "
       >
         <path
           fill="currentColor"
@@ -27,6 +28,7 @@
         width="1em"
         height="1em"
         viewBox="0 0 24 24"
+
       >
         <path
           fill="currentColor"

@@ -1,8 +1,9 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-portada',
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: './portada.component.html'
 })
 export class PortadaComponent {

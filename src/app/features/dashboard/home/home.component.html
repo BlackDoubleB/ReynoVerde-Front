@@ -1,29 +1,34 @@
-<div class="flex flex-col gap-20">
+<div class="flex flex-col gap-10 sm:gap-20 mx-5">
   <app-portada></app-portada>
 
-  <div class="flex flex-col gap-40">
-    <section class="grid grid-cols-[0.5fr_1fr] gap-5">
-      <div class="flex flex-col gap-5">
-        <h4 class="font-bold text-3xl text-black">Las plantas más vendidas</h4>
-        <p class="text-gray-500">
+  <div class="flex flex-col gap-20 sm:gap-35">
+    <section class="grid grid-cols-1 sm:grid-cols-[0.5fr_1fr] gap-5">
+      <div class="flex flex-col text-center items-center sm:text-start sm:items-start gap-5">
+        <h3 class="font-bold text-xl sm:text-3xl text-black dark:text-gray-100">
+          Las plantas más vendidas
+        </h3>
+        <p>
           La forma más fácil de llevar una vida saludable es comprando tus
           plantas favoritas.
         </p>
 
         <app-boton-redirigir
-          clasesExtras="bg-[#C1DCDC] text-black w-fit hover:bg-[#b3cece]"
+          clasesExtras="bg-[#C1DCDC] dark:bg-[#1A2B2B] dark:border dark:border-gray-100 text-black dark:text-gray-100 w-fit hover:bg-[#b3cece] dark:hover:bg-[#192222]"
           texto="Ver mas"
           ruta="/plantas"
         ></app-boton-redirigir>
       </div>
 
-      <div class="flex justify-between">
+      <div class="flex w-full flex-wrap justify-center sm:flex-nowrap sm:justify-between rounded-2xl gap-2">
         @for(planta of imgVendidas; track planta.imagenUrl){
-        <app-card-1
-          [imagenUrl]="planta.imagenUrl"
-          [titulo]="planta.titulo"
-          [precio]="planta.precio"
-        ></app-card-1>
+        <div class="max-w-[192px] w-full">
+          <app-card-1
+            [imagenUrl]="planta.imagenUrl"
+            [titulo]="planta.titulo"
+            [precio]="planta.precio"
+          ></app-card-1>
+        </div>
+
         }@empty {
         <p>Aun no hay plantas</p>
         }
@@ -31,8 +36,6 @@
     </section>
     <app-about></app-about>
     <app-home-categoria></app-home-categoria>
-   
-    <!-- <app-clima-listar></app-clima-listar> -->
+    <app-home-comentarios></app-home-comentarios>
   </div>
-   <app-home-comentarios></app-home-comentarios>
 </div>

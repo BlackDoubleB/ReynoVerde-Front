@@ -1,10 +1,7 @@
-<div class="max-w-lg min-w-md p-5 bg-[#C1DCDC] rounded-lg shadow-md">
-  <p class="text-gray-700">
-    {{ comentario }}
-  </p>
 
-  <div class="mt-4 text-left flex gap-5">
-    <div class="text-black -mr-2">
+  <div class=" rounded-lg w-2xs sm:w-2xl h-[200px] overflow-y-hidden">
+   <div class="mt-4 text-left flex gap-5">
+    <div class="text-black dark:text-gray-100 -mr-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="1em"
@@ -21,8 +18,15 @@
       <img [ngSrc]="imagen" fill />
     </div>
     <div>
-      <p class="text-black font-semibold">{{ nombreUsuario }}</p>
-      <span class="text-gray-500 text-sm">{{ fecha }}</span>
+      <p class="text-black font-semibold dark:text-gray-100">{{ nombreUsuario }}</p>
+      <p class="text-gray-500 text-sm dark:text-gray-200">{{ fecha }}</p>
     </div>
   </div>
+  
+  <p class="text-gray-700 dark:text-gray-200 break-words">
+    {{ comentario }}
+  </p>
+
+ 
 </div>
+
