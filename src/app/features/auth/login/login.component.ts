@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IniciarSesion } from '../account.interface';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -17,6 +17,8 @@ export default class LoginComponent {
     email: ['', { validators: [Validators.required, Validators.email] }],
     password: ['', { validators: [Validators.required] }]
   })
+
+  
   iniciarSesion() {
   let usuarioForm = this.form.value;
       if (this.form.valid) {
@@ -28,7 +30,7 @@ export default class LoginComponent {
 
         this.authService.iniciarSesion(usuario).subscribe({
           next: () => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/inicio']);
           },
             error: err => console.error('Error de login:', err)
 

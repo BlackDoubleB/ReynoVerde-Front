@@ -9,7 +9,7 @@ export const routes: Routes = [
     component: LayoutComponent,
     canActivate: [privateGuard],
     loadChildren: () => import('./features/dashboard/dashboard.routes'),
-    title: 'home'
+    title: 'Inicio'
    
   },
   {

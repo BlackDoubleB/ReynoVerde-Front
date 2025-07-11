@@ -1,11 +1,11 @@
 <button class="cursor-pointer">
   <div
-    class="cuerpo bg-gray-200  w-[42px] h-5 rounded-2xl relative"
+    class="cuerpo bg-gray-200  w-[40px] h-5 rounded-2xl relative"
     (click)="mover()"
   >
     <div
       class="bg-[#C1DCDC] dark:bg-[#1A2B2B] circulo rounded-full w-8 h-8
-       flex items-center justify-center absolute -top-[35%] z-10"
+       flex items-center justify-center absolute -top-[30%] z-10"
       [ngClass]="{ esClaro: claro(), esOscuro: oscuro() }"
     >
       @if(claro()){
@@ -47,14 +47,14 @@
   }
 
   .esOscuro {
-    left: calc(44px - 32px);
+    left: calc(41px - 32px);
     /* El borde izquierdo del elemento se mueve 20px dentro del ancho del contenedor  */
     /* left: 50%; */
     /* El borde izquierdo del elemento se mueve al 50% del ancho del contenedor padre. */
   }
 
   .esClaro {
-    left: 0;
+    left: -1px;
     /* El borde izquierdo del elemento se alinea con el borde izquierdo del contenedor padre.*/
   }
 </style>

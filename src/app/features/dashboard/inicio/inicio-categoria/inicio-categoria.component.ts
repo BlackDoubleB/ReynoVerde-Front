@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BotonRedirigirComponent } from "../../../../components/botones/boton-redirigir/boton-redirigir.component";
-import { Card2Component } from "../../../../components/card-2/card-2.component";
+import { Component } from '@angular/core';
+import { BotonRedirigirComponent } from '../../../../components/botones/boton-redirigir/boton-redirigir.component';
+import { Card2Component } from '../../../../components/card-2/card-2.component';
 
 @Component({
-  selector: 'app-home-categoria',
+  selector: 'app-inicio-categoria',
   imports: [CommonModule, BotonRedirigirComponent, Card2Component],
-  templateUrl: './home-categoria.component.html',
-  styleUrl: './home-categoria.component.css'
+  templateUrl: './inicio-categoria.component.html',
 })
-export class HomeCategoriaComponent {
+export class InicioCategoriaComponent {
 imgCategoria =[
   {
     imagenUrl: 'temporables/plantas/plantac1.png',
@@ -27,5 +26,4 @@ imgCategoria =[
     descripcion: 'Horem ipsum dolor sit amet, consectetur adipiscing elit.'
   },
 ]
- 
 }

@@ -1,8 +1,9 @@
-<div class="aspect-3/5 relative rounded-2xl border border-gray-300 overflow-hidden shadow-md">
+<div [ngClass]="clasesExtras" class="relative shadow-md shadow-gray-500 dark:shadow-zinc-950 overflow-hidden">
   <img [ngSrc]="imagenUrl" alt="imagen del card" fill/>
 </div>
 
 <div class="py-2 ">
   <h4 class="text-black dark:text-gray-100 font-medium">{{ titulo }}</h4>
-  <p>S/. {{ precio }}</p>
+  <p>S/. {{ precio | number:'1.2-2' }}</p>
 </div>
+

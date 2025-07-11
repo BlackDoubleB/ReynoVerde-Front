@@ -1,0 +1,84 @@
+<div class="fixed z-10 bg-neutral-900/80 w-full min-h-screen top-0 left-0"
+     [ngClass]="{ 'hidden': !estadoFiltro}"
+    
+>
+    <div class="w-72 bg-white shadow-lg p-4 border rounded-md text-sm space-y-6">
+  <!-- Encabezado -->
+  <div class="flex justify-between items-center border-b pb-2">
+    <h2 class="font-bold text-lg">FILTRAR</h2>
+    <button class="text-xl font-bold cursor-pointer" type="button" (click)="notificarClick()" >✕</button>
+  </div>
+
+  <!-- Disponibilidad -->
+  <div>
+    <h3 class="font-semibold border-b pb-1 mb-2">Disponibilidad</h3>
+    <div class="space-y-2">
+      <label class="flex items-center gap-2">
+        <input type="checkbox" checked class="accent-green-600" />
+        <span class="text-green-600 font-medium">In Stock (13)</span>
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" class="accent-green-600" />
+        <span class="text-gray-600">Out Of Stock (2)</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Precio -->
+  <div>
+    <h3 class="font-semibold border-b pb-1 mb-2">Precio</h3>
+    <input type="range" min="0" max="859" class="w-full accent-green-600">
+    <p class="text-sm mt-1 text-green-700">Price: S/. 0.00 — S/. 859.00</p>
+    <button class="mt-2 px-4 py-1 border-2 border-green-600 text-green-700 rounded-full text-sm hover:bg-green-50 transition">
+      FILTER
+    </button>
+  </div>
+
+  <!-- Color Planta -->
+  <div>
+    <h3 class="font-semibold border-b pb-1 mb-2">ColorPlanta</h3>
+    <div class="space-y-2">
+      <label class="flex items-center gap-2">
+        <input type="checkbox" class="accent-green-600" />
+        <span class="text-green-700">Amarillo (4)</span>
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" class="accent-green-600" />
+        <span class="text-gray-400">Verde (0)</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Tamaño -->
+  <div>
+    <h3 class="font-semibold border-b pb-1 mb-2">Tamaño</h3>
+    <div class="space-y-2">
+      <label class="flex items-center gap-2">
+        <input type="checkbox" class="accent-green-600" />
+        <span class="text-green-700">Ideal (13)</span>
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" class="accent-green-600" />
+        <span class="text-gray-400">Mini (0)</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Pet Friendly -->
+  <div>
+    <h3 class="font-semibold border-b pb-1 mb-2">PetFriendly</h3>
+    <div class="space-y-2">
+      <label class="flex items-center gap-2">
+        <input type="checkbox" class="accent-green-600" />
+        <span class="text-green-700">(4)</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Clear All -->
+  <div>
+    <a href="#" class="text-green-600 font-semibold hover:underline hover:pl-1 transition-all">Clear all →</a>
+  </div>
+</div>
+
+</div>

@@ -1,1 +1,48 @@
-<p>Planta-seccion</p>
+<app-barra-filtro [estadoFiltro]="mostrarFiltro()" (huboClick)="cambiarEstado()"></app-barra-filtro>
+
+<section class="mx-5">
+  <div
+    class="inline-flex items-center gap-2 mb-5 cursor-pointer border rounde-sm py-1 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-950 text-black dark:text-white hover:font-medium hover:scale-x-105 transition-all duration-100 ease-in-out"
+    [ngClass]="{'hidden': mostrarFiltro()}"
+    (click)="cambiarEstado()"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1.5em"
+      height="1.5em"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
+        d="M7 21v-3m10 3v-6m0-9V3M7 9V3m0 15c-.932 0-1.398 0-1.765-.152a2 2 0 0 1-1.083-1.083C4 16.398 4 15.932 4 15s0-1.398.152-1.765a2 2 0 0 1 1.083-1.083C5.602 12 6.068 12 7 12s1.398 0 1.765.152a2 2 0 0 1 1.083 1.083C10 13.602 10 14.068 10 15s0 1.398-.152 1.765a2 2 0 0 1-1.083 1.083C8.398 18 7.932 18 7 18m10-6c-.932 0-1.398 0-1.765-.152a2 2 0 0 1-1.083-1.083C14 10.398 14 9.932 14 9s0-1.398.152-1.765a2 2 0 0 1 1.083-1.083C15.602 6 16.068 6 17 6s1.398 0 1.765.152a2 2 0 0 1 1.083 1.083C20 7.602 20 8.068 20 9s0 1.398-.152 1.765a2 2 0 0 1-1.083 1.083C18.398 12 17.932 12 17 12"
+        color="currentColor"
+      />
+    </svg>
+
+    <p>Filtrar</p>
+  </div>
+
+  <div
+    class="card-planta grid max-[300px]:grid-cols-1 max-[639px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5"
+  >
+    @for(planta of plantas; track planta.nombreProducto){
+
+    <div class="w-full">
+      <app-card-1
+        clasesExtras="aspect-2/3 rounded-xs"
+        [imagenUrl]="planta.imagenUrl"
+        [titulo]="planta.productoNombre"
+        [precio]="planta.precio"
+      >
+      </app-card-1>
+    </div>
+
+    }@empty {
+    <li>There are no items</li>
+    }
+  </div>
+</section>

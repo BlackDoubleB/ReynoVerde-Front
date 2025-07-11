@@ -19,10 +19,11 @@
         ></app-boton-redirigir>
       </div>
 
-      <div class="flex w-full flex-wrap justify-center sm:flex-nowrap sm:justify-between rounded-2xl gap-2">
+      <div class="flex w-full flex-wrap justify-center sm:flex-nowrap sm:justify-between gap-2">
         @for(planta of imgVendidas; track planta.imagenUrl){
-        <div class="max-w-[192px] w-full">
+        <div class="max-w-[192px] w-full ">
           <app-card-1
+            clasesExtras="aspect-3/5 border border-gray-50  dark:border-0 rounded-md"
             [imagenUrl]="planta.imagenUrl"
             [titulo]="planta.titulo"
             [precio]="planta.precio"
@@ -34,8 +35,8 @@
         }
       </div>
     </section>
-    <app-about></app-about>
-    <app-home-categoria></app-home-categoria>
-    <app-home-comentarios></app-home-comentarios>
+    <app-inicio-nosotros></app-inicio-nosotros>
+    <app-inicio-categoria></app-inicio-categoria>
+    <app-inicio-comentarios></app-inicio-comentarios>
   </div>
 </div>

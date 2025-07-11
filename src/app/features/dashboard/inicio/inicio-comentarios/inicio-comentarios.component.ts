@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { ComentariosComponent } from "../../../../components/comentarios/comentarios.component";
+import { ComentariosComponent } from '../../../../components/comentarios/comentarios.component';
 
 @Component({
-  selector: 'app-home-comentarios',
+  selector: 'app-inicio-comentarios',
   imports: [ComentariosComponent],
-  templateUrl: './home-comentarios.component.html',
+  templateUrl: './inicio-comentarios.component.html',
+  styleUrl: './inicio-comentarios.component.css'
 })
-export class HomeComentariosComponent {
-   comentarios = [
+export class InicioComentariosComponent {
+  comentarios = [
   {
     foto: 'temporables/usuarios/perfil.png',
     comentario: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
