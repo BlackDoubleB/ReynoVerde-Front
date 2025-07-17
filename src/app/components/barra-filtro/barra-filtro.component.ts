@@ -16,20 +16,21 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './barra-filtro.component.html',
   styleUrl: './barra-filtro.component.css',
 })
-export default class BarraFiltroComponent implements OnInit {
+export default class BarraFiltroComponent {
   _router = inject(Router);
   _activatedRoute = inject(ActivatedRoute); 
   @Input() categorias: Categoria[] = [];
   @Input() estadoFiltro: boolean = false;
-
+  @Input() categoriasSeleccionadasUrl: string[] = [];
   @Output() huboClick = new EventEmitter<void>();
   @Output() categoriasSeleccionadas = new EventEmitter<string[]>();
 
-  //Array para rastrear las categorias seleccionadas
+ 
+
+
   seleccionadas: string[] = [];
   seleccionadosUrl: string[] = [];
 
-  // Método para manejar cambios en los checkboxes
   onCheckboxChange(nombreCategoria: string, event: Event) {
     const isChecked = (event.target as HTMLInputElement).checked;
 
@@ -48,9 +49,8 @@ export default class BarraFiltroComponent implements OnInit {
     this.huboClick.emit();
   }
 
-  ngOnInit(): void {
-    this._activatedRoute.queryParams.subscribe((params) => {
-      this.seleccionadas = params['categoria']||[];
-    })
+   ngOnInit() {
+    // Inicializar con las categorías seleccionadas que vienen del padre
+    this.seleccionadas = [...this.categoriasSeleccionadasUrl];
   }
 }
