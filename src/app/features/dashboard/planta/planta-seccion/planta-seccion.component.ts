@@ -39,19 +39,17 @@ export default class PlantaSeccionComponent implements OnInit {
     this._plantasService
       .ObtenerTodaCategoria()
       .subscribe((resultado) => (this.categorias = resultado));
-    
+
     this.obtenerPlantas();
   }
 
   todoplanta = false;
   plantaporcategoria = false;
   plantapornombre = false;
-  
-  
+
   obtenerPlantas(categorias: string[] = [], nombre: string | null = null) {
     this.loading = true;
 
-    
     this.actualizarURL(categorias, nombre);
 
     this._plantasService.obtenerProductoFiltrado(categorias, nombre).subscribe({
@@ -67,7 +65,7 @@ export default class PlantaSeccionComponent implements OnInit {
   }
 
   private actualizarURL(categorias: string[], nombre: string | null) {
-    let queryParams: any = {}; 
+    let queryParams: any = {};
 
     if (categorias.length > 0) {
       queryParams.categoria = categorias;
@@ -77,10 +75,10 @@ export default class PlantaSeccionComponent implements OnInit {
       queryParams.nombre = nombre;
     }
 
-     if(categorias.length ===0){
-        queryParams.categoria = null;
+    if (categorias.length === 0) {
+      queryParams.categoria = null;
     }
-    console.log("queryParams", queryParams);
+    console.log('queryParams', queryParams);
 
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
