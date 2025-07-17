@@ -1,9 +1,14 @@
-<app-barra-filtro [estadoFiltro]="mostrarFiltro()" (huboClick)="cambiarEstado()"></app-barra-filtro>
+<app-barra-filtro
+  [estadoFiltro]="mostrarFiltro()"
+  (huboClick)="cambiarEstado()"
+  [categorias]="categorias"
+  (categoriasSeleccionadas)="onCategoriasSeleccionadas($event)"
+></app-barra-filtro>
 
 <section class="mx-5">
   <div
     class="inline-flex items-center gap-2 mb-5 cursor-pointer border rounde-sm py-1 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-950 text-black dark:text-white hover:font-medium hover:scale-x-105 transition-all duration-100 ease-in-out"
-    [ngClass]="{'hidden': mostrarFiltro()}"
+    [ngClass]="{ hidden: mostrarFiltro() }"
     (click)="cambiarEstado()"
   >
     <svg

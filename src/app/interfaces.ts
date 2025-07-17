@@ -7,3 +7,9 @@ export interface Producto {
     categoriaNombre: string;
     cantidadStock: number;
 }
+
+
+export interface Categoria {
+    id: string;
+    nombreCategoria: string;
+}

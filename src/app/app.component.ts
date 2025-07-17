@@ -26,6 +26,8 @@ export class AppComponent {
       this.loadingVisible = loading;
     });
   }
+  //Se pone initObservers en ngOnit ya que desde html el usuario no lo llama directamente, sino que se llama desde el servicio de loading
+  //Por lo tanto, al iniciar la aplicacion se inicializa el observer para que este pendiente de los cambios en el estado de loading y asi poder mostrar u ocultar el componente de carga.
 
 }
 
