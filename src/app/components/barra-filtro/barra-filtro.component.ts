@@ -17,8 +17,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export default class BarraFiltroComponent {
   _router = inject(Router);
-  _activatedRoute = inject(ActivatedRoute); 
-  
+  _activatedRoute = inject(ActivatedRoute);
+
   @Input() categorias: Categoria[] = [];
   @Input() clasesExtra: Record<string, boolean> = {};
   @Input() categoriasSeleccionadasUrl: string[] = [];
@@ -46,8 +46,9 @@ export default class BarraFiltroComponent {
     this.notificarClickCerrar.emit();
   }
 
-   ngOnInit() {
+  ngOnInit() {
     // Inicializar con las categorías seleccionadas que vienen del padre
     this.seleccionadas = [...this.categoriasSeleccionadasUrl];
   }
+
 }

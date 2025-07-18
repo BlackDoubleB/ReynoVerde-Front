@@ -19,7 +19,6 @@ export default class PlantaSeccionComponent implements OnInit {
   loading = false;
 
   categorias: any[] = [];
-  estadoFiltro = signal(false);
   categoriasSeleccionadasHijo: string[] = [];
   categoriasSeleccionadasUrl: string[] = [];
   nombreFiltro: string | null = null;
@@ -27,23 +26,12 @@ export default class PlantaSeccionComponent implements OnInit {
 
   abrirFiltro() {
     this.mostrarFiltro.set(true);
-     this.estadoFiltro.set(!this.estadoFiltro());
-    if (this.estadoFiltro()) {
-      document.body.classList.add('overflow-hidden');
-    } else {
-      document.body.classList.remove('overflow-hidden');
-    }
+    document.body.classList.add('overflow-hidden');
   }
 
   cerrarFiltro() {
     this.mostrarFiltro.set(false);
-     this.estadoFiltro.set(!this.estadoFiltro());
-    if (this.estadoFiltro()) {
-      document.body.classList.add('overflow-hidden');
-    } else {
-      document.body.classList.remove('overflow-hidden');
-    }
-    
+    document.body.classList.remove('overflow-hidden');    
   }
 
   ngOnInit(): void {
@@ -115,8 +103,8 @@ export default class PlantaSeccionComponent implements OnInit {
     //Como desde NgOninit ya se cargo los datos anteriores, al hacer la segunda consulta desde el hijo seleccionado con datos repetidos seguira haciendo la misma consulta
     //Para sincronizar los check con el hijo se envia categoriasSeleccionadasUrl y pone dentro de NgOnInit para que refrezque su componente
 
+    
     this.categoriasSeleccionadasHijo = categorias;
-    console.log('Categorías seleccionadas:', this.categoriasSeleccionadasHijo);
     this.obtenerPlantas(this.categoriasSeleccionadasHijo, this.nombreFiltro);
   }
 
