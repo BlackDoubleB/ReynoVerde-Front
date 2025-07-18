@@ -20,7 +20,7 @@ export default class BarraFiltroComponent {
   _activatedRoute = inject(ActivatedRoute); 
   
   @Input() categorias: Categoria[] = [];
-  @Input() estadoFiltro: boolean = false;
+  @Input() clasesExtra: Record<string, boolean> = {};
   @Input() categoriasSeleccionadasUrl: string[] = [];
   @Output() notificarClickCerrar = new EventEmitter<void>();
   @Output() categoriasSeleccionadas = new EventEmitter<string[]>();

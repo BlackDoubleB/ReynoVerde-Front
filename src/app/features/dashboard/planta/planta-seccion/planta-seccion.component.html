@@ -1,17 +1,14 @@
-
+<section class="mx-5 relative">
   <app-barra-filtro
-  [estadoFiltro]="mostrarFiltro()"
-  (notificarClickCerrar)="cambiarEstado()"
-  [categorias]="categorias"
-  (categoriasSeleccionadas)="onCategoriasSeleccionadas($event)"
-  [categoriasSeleccionadasUrl]="categoriasSeleccionadasUrl"
-></app-barra-filtro>
-
-
-<section class="mx-5">
+    (notificarClickCerrar)="cerrarFiltro()"
+    [categorias]="categorias"
+    (categoriasSeleccionadas)="onCategoriasSeleccionadas($event)"
+    [categoriasSeleccionadasUrl]="categoriasSeleccionadasUrl"
+    [clasesExtra]="{ 'scale-100': mostrarFiltro() }"
+  ></app-barra-filtro>
   <div
     class="inline-flex items-center gap-2 mb-5 cursor-pointer border rounde-sm py-1 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-950 text-black dark:text-white hover:font-medium hover:scale-x-105 transition-all duration-100 ease-in-out"
-    (click)="cambiarEstado()"
+    (click)="abrirFiltro()"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -53,3 +50,11 @@
     }
   </div>
 </section>
+
+<div
+  class="absolute w-full min-h-screen top-0 left-0"
+  [ngClass]="{
+    'bg-neutral-900/70 z-10 ': mostrarFiltro(),
+    'bg-none -z-10': !mostrarFiltro()
+  }"
+></div>
