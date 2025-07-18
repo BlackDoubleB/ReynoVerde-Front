@@ -1,28 +1,29 @@
-<div
-  class="fixed z-10 bg-neutral-900/70 text-black dark:text-gray-200 w-full min-h-screen top-0 left-0"
-  [ngClass]="{ hidden: !estadoFiltro }"
->
-  <div class="w-72 bg-white dark:bg-neutral-900 shadow-lg p-4 border rounded-md text-sm space-y-6">
+<div class="absolute top-5 z-20">
+  <div
+    class="w-72 bg-white dark:bg-neutral-900 shadow-lg p-4 border rounded-md text-sm space-y-6"
+  >
     <!-- Encabezado -->
     <div class="flex justify-between items-center border-b pb-2">
       <h2 class="font-bold text-lg">FILTRAR</h2>
       <button
         class="text-xl font-bold cursor-pointer"
         type="button"
-        (click)="notificarClick()"
+        (click)="huboClick()"
       >
         ✕
       </button>
     </div>
 
-     <!-- Nombre -->
+    <!-- Nombre -->
     <div>
       <h3 class="font-semibold pb-1 mb-2">Nombre Planta</h3>
       <div class="space-y-3">
         <label class="flex items-center gap-2">
-          <input type="text" class=" bg-white border rounded-lg text-black px-2 py-1" />
+          <input
+            type="text"
+            class="bg-white border rounded-lg text-black px-2 py-1"
+          />
         </label>
-       
       </div>
     </div>
 
@@ -32,14 +33,14 @@
 
       @for(categoria of categorias; track categoria.nombreCategoria){
       <div class="space-y-2">
-        <label class="flex items-center gap-2 ">
+        <label class="flex items-center gap-2">
           <input
             name="nombreCategoria"
             type="checkbox"
             [value]="categoria.nombreCategoria"
             [checked]="seleccionadas.includes(categoria.nombreCategoria)"
             (change)="onCheckboxChange(categoria.nombreCategoria, $event)"
-            class="accent-[#C1DCDC] "
+            class="accent-[#C1DCDC]"
           />
           {{ categoria.nombreCategoria }}
         </label>
@@ -50,7 +51,12 @@
     <!-- Precio -->
     <div>
       <h3 class="font-semibold border-b pb-1 mb-2">Precio</h3>
-      <input type="range" min="0" max="859" class="w-full accent-neutral-900 dark:accent-gray-200" />
+      <input
+        type="range"
+        min="0"
+        max="859"
+        class="w-full accent-neutral-900 dark:accent-gray-200"
+      />
       <p class="text-sm mt-1">Monto : S/. 0.00 — S/. 859.00</p>
       <button
         class="mt-2 px-4 py-1 border-2 border- bg-[#C1DCDC] dark:bg-[#1A2B2B] dark:border-gray-200 rounded-full text-sm hover:bg-[#C1DCDC] dark:hover:bg-[#131d1d] transition cursor-pointer"
@@ -69,3 +75,6 @@
     </div>
   </div>
 </div>
+
+<!-- <div class="absolute bg-neutral-900/70 text-black dark:text-gray-200 w-full min-h-screen top-0 left-0 -z-10"
+></div>   -->

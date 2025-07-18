@@ -14,19 +14,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-barra-filtro',
   imports: [CommonModule],
   templateUrl: './barra-filtro.component.html',
-  styleUrl: './barra-filtro.component.css',
 })
 export default class BarraFiltroComponent {
   _router = inject(Router);
   _activatedRoute = inject(ActivatedRoute); 
+  
   @Input() categorias: Categoria[] = [];
   @Input() estadoFiltro: boolean = false;
   @Input() categoriasSeleccionadasUrl: string[] = [];
-  @Output() huboClick = new EventEmitter<void>();
+  @Output() notificarClickCerrar = new EventEmitter<void>();
   @Output() categoriasSeleccionadas = new EventEmitter<string[]>();
-
- 
-
 
   seleccionadas: string[] = [];
   seleccionadosUrl: string[] = [];
@@ -45,8 +42,8 @@ export default class BarraFiltroComponent {
     this.categoriasSeleccionadas.emit([...this.seleccionadas]);
   }
 
-  notificarClick() {
-    this.huboClick.emit();
+  huboClick() {
+    this.notificarClickCerrar.emit();
   }
 
    ngOnInit() {

@@ -28,7 +28,6 @@ export default class PlantaSeccionComponent implements OnInit {
 
   cambiarEstado() {
     this.estadoFiltro.set(!this.estadoFiltro());
-    
     if (this.estadoFiltro()) {
       document.body.classList.add('overflow-hidden');
     } else {

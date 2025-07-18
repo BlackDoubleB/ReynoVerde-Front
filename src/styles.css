@@ -81,3 +81,11 @@
     font-size: 12px;
   }
 }
+
+.mostrarFormFiltro{
+  overflow: hidden;
+}
+
+.quitarFormFiltro{
+
+}
