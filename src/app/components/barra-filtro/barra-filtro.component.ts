@@ -21,13 +21,13 @@ export default class BarraFiltroComponent {
 
   @Input() categorias: Categoria[] = [];
   @Input() clasesExtra: Record<string, boolean> = {};
-  @Input() categoriasSeleccionadasUrl: string[] = [];
+  @Input() categoriasSeleccionadasUrl: [string[] , string ] = [[],''];
   @Output() notificarClickCerrar = new EventEmitter<void>();
-  @Output() categoriasSeleccionadas = new EventEmitter<string[]>();
+  @Output() categoriasSeleccionadas = new EventEmitter<[string[], string]>();
 
   seleccionadas: string[] = [];
   seleccionadosUrl: string[] = [];
-
+  nombre: string = '';
   onCheckboxChange(nombreCategoria: string, event: Event) {
     const isChecked = (event.target as HTMLInputElement).checked;
 
@@ -38,8 +38,12 @@ export default class BarraFiltroComponent {
         (cat) => cat !== nombreCategoria
       );
     }
+    this.categoriasSeleccionadas.emit([[...this.seleccionadas], this.nombre ]);
+  }
 
-    this.categoriasSeleccionadas.emit([...this.seleccionadas]);
+  onNombreIngresado(event: Event){
+    this.nombre = (event.target as HTMLInputElement).value;
+    this.categoriasSeleccionadas.emit([[...this.seleccionadas], this.nombre ]);
   }
 
   huboClick() {
@@ -48,7 +52,8 @@ export default class BarraFiltroComponent {
 
   ngOnInit() {
     // Inicializar con las categorías seleccionadas que vienen del padre
-    this.seleccionadas = [...this.categoriasSeleccionadasUrl];
+    this.seleccionadas = [...this.categoriasSeleccionadasUrl[0]];
+    this.nombre= this.categoriasSeleccionadasUrl[1];
   }
 
 }
