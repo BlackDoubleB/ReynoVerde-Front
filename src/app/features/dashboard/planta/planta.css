@@ -1,0 +1,8 @@
+.mostrarScroll{
+    scale: 1;
+    transition: all 0.5s ease;
+}
+.ocultarScroll{
+    scale: 0.8;
+    opacity: 0.5;
+}

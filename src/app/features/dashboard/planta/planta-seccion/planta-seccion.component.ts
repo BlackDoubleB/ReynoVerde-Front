@@ -1,25 +1,29 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { Card1Component } from '../../../../components/card-1/card-1.component';
 import { ServiceDashboardService } from '../../services/service-dashboard.service';
 import { CommonModule } from '@angular/common';
 import BarraFiltroComponent from '../../../../components/barra-filtro/barra-filtro.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EfectoScrollDirective } from '../directivas/efecto-scroll.directive';
 
 @Component({
   selector: 'app-planta-seccion',
-  imports: [Card1Component, CommonModule, BarraFiltroComponent],
+  imports: [Card1Component, CommonModule, BarraFiltroComponent,EfectoScrollDirective],
   templateUrl: './planta-seccion.component.html',
+  styleUrl: '../planta.css'
 })
 export default class PlantaSeccionComponent implements OnInit {
   private _plantasService = inject(ServiceDashboardService);
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
 
+ @ViewChild('observedElement') observedElement!: ElementRef;
+  private observer!: IntersectionObserver;
+
   plantas: any[] = [];
   loading = false;
 
   categorias: any[] = [];
-  // categoriasSeleccionadasHijo: string[] = [];
   categoriasSeleccionadasUrl: [string[], string] = [[], ''];
   nombreFiltro: string | null = null;
   mostrarFiltro = signal(false);
@@ -55,6 +59,7 @@ export default class PlantaSeccionComponent implements OnInit {
     //antes no se mantenian datos en la url porque al recargar llamaba al obtenerPlantas() sin parametros y no se pasaba array porque se eliminan en recargas
     this.obtenerPlantas(this.categoriasSeleccionadasUrl[0], this.categoriasSeleccionadasUrl[1]);
   }
+
 
   todoplanta = false;
   plantaporcategoria = false;
@@ -111,8 +116,5 @@ export default class PlantaSeccionComponent implements OnInit {
     this.obtenerPlantas(categoriasNombre[0], categoriasNombre[1]);
   }
 
-  // filtrarPorNombre(nombre: string) {
-  //   this.nombreFiltro = nombre;
-  //   this.obtenerPlantas(this.categoriasSeleccionadasHijo, this.nombreFiltro);
-  // }
+
 }
