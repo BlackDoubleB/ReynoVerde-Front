@@ -17,9 +17,6 @@ export default class PlantaSeccionComponent implements OnInit {
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
 
- @ViewChild('observedElement') observedElement!: ElementRef;
-  private observer!: IntersectionObserver;
-
   plantas: any[] = [];
   loading = false;
 
@@ -50,13 +47,9 @@ export default class PlantaSeccionComponent implements OnInit {
       categoria = Array.isArray(categoria) ? categoria : [categoria];
       let array = [...categoria];
       this.categoriasSeleccionadasUrl = [[...new Set(array)],nombre];
-      //Cuando hago un cambio de query params y quiero consultar por ingreso manual en la url, se recarga la pagina por lo que este ngoninit se activa y borra todo dato del heap, menos las url del navegador, se obtiene los datos cambiados en la url y pasamos la url al categoriasSeleccionadasUrl, eso se envia al hijo que escucha desde ngoninit(porque el renderizado del padre renderiza el hijo y activa su ngoninit) agrega este categoriasSeleccionadasUrl al array que luego ellos vuelven a enviar cuando se da check desde el formularioo hijo, siendo ambos anidados.
-
-      //La url del navegador puede ser manipulada al mismo tiempo tambien los check del form, esto porque:
-      //Si recargo se guarda la url y se anida con el array del hijo
-      //El array del hijo trabajo sin verse afectado porque sus cambios llaman a obtenerPlantas fuera del ngoninit haciendo que el route redirija sin problemas, ademas si se elimina un param desde el form esto elimina desde el array del hijo y dicho array se llama en obtenerPlantas fuera de ngoninit hacuendo que el route funcione sin problemas.
+     
     });
-    //antes no se mantenian datos en la url porque al recargar llamaba al obtenerPlantas() sin parametros y no se pasaba array porque se eliminan en recargas
+    
     this.obtenerPlantas(this.categoriasSeleccionadasUrl[0], this.categoriasSeleccionadasUrl[1]);
   }
 
@@ -110,9 +103,7 @@ export default class PlantaSeccionComponent implements OnInit {
   }
 
   onCategoriasSeleccionadas(categoriasNombre: [string[], string]) {
-    //Como desde NgOninit ya se cargo los datos anteriores, al hacer la segunda consulta desde el hijo seleccionado con datos repetidos seguira haciendo la misma consulta
-    //Para sincronizar los check con el hijo se envia categoriasSeleccionadasUrl y pone dentro de NgOnInit para que refrezque su componente
-    // this.categoriasSeleccionadasHijo = categoriasNombre[0];
+   
     this.obtenerPlantas(categoriasNombre[0], categoriasNombre[1]);
   }
 

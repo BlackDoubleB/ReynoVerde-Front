@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-card-1',
-  imports: [CommonModule],
+  imports: [CommonModule,NgOptimizedImage],
   templateUrl: './card-1.component.html',
   styleUrl: './card-1.component.css'
 })

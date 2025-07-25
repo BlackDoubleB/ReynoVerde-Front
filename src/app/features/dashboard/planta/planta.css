@@ -1,8 +1,16 @@
-.mostrarScroll{
-    scale: 1;
-    transition: all 0.5s ease;
-}
-.ocultarScroll{
-    scale: 0.8;
-    opacity: 0.5;
-}
+
+ .mostrarScroll{
+    animation-name: mostrar;
+    animation-duration: 0.8s;
+    
+    animation-fill-mode: forwards;
+ }
+
+ @keyframes mostrar{
+    from{
+        scale: 0.8;
+    }
+    to{
+        scale: 1;
+    }
+ }
