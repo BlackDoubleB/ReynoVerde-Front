@@ -1,7 +1,7 @@
 
  .mostrarScroll{
     animation-name: mostrar;
-    animation-duration: 0.8s;
+    animation-duration: 1s;
     
     animation-fill-mode: forwards;
  }
@@ -9,8 +9,10 @@
  @keyframes mostrar{
     from{
         scale: 0.8;
+        opacity: 0.5;
     }
     to{
         scale: 1;
+        opacity: 1;
     }
  }
