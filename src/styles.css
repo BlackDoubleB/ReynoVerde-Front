@@ -82,10 +82,31 @@
   }
 }
 
+
+
+
 .mostrarFormFiltro{
   overflow: hidden;
 }
 
-.quitarFormFiltro{
+/* Directivas */
 
-}
+ .mostrarScroll{
+    animation-name: mostrar;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+ }
+
+ @keyframes mostrar{
+    from{
+        transform-origin: top;
+        scale: 0.95;
+        opacity: 0.2;
+       
+    }
+    to{
+        scale: 1;
+        opacity: 1;
+    }
+ }

@@ -4,13 +4,12 @@ import { ServiceDashboardService } from '../../services/service-dashboard.servic
 import { CommonModule } from '@angular/common';
 import BarraFiltroComponent from '../../../../components/barra-filtro/barra-filtro.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EfectoScrollDirective } from '../directivas/efecto-scroll.directive';
+import { EfectoScrollDirective } from '../../directivas/efecto-scroll.directive';
 
 @Component({
   selector: 'app-planta-seccion',
   imports: [Card1Component, CommonModule, BarraFiltroComponent,EfectoScrollDirective],
   templateUrl: './planta-seccion.component.html',
-  styleUrl: '../planta.css'
 })
 export default class PlantaSeccionComponent implements OnInit {
   private _plantasService = inject(ServiceDashboardService);

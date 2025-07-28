@@ -1,17 +1,17 @@
 <div class="text-center flex flex-col gap-10 sm:gap-20 ">
   <div class="sm:mb-5">
-    <h3 class="text-xl sm:text-3xl font-bold text-black dark:text-gray-100 pb-5">Categorias</h3>
-    <p>Encuentra lo que buscas</p>
+    <h3 class="text-xl sm:text-3xl font-bold text-black dark:text-gray-100 pb-5" >Categorias</h3>
+    <p appEfectoScroll>Encuentra lo que buscas</p>
   </div>
 
 
-  <div class="w-screen bg-[#C1DCDC] dark:bg-[#1A2B2B] pt-10 relative left-1/2 -translate-x-1/2">
+  <div class="w-screen bg-[#C1DCDC] dark:bg-[#1A2B2B] pt-10 relative left-1/2 -translate-x-1/2" appEfectoScroll>
     <div class="max-w-[1200px] mx-auto w-full px-5">
       <div class="flex flex-col items-center sm:flex-row sm:justify-between gap-5">
         @for(planta of imgCategoria; let i = $index; track planta.imagenUrl ) {
 
-        <div [ngClass]="{ 'sm:-top-20 relative': i !== 1 }">
-          <app-card-2
+        <div [ngClass]="{ 'sm:-top-20 relative': i !== 1 }" >
+          <app-card-2 
             [imagenUrl]="planta.imagenUrl"
             [categoria]="planta.categoria"
             [descripcion]="planta.descripcion"

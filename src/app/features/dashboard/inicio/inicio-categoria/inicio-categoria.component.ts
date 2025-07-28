@@ -5,7 +5,7 @@ import { Card2Component } from '../../../../components/card-2/card-2.component';
 
 @Component({
   selector: 'app-inicio-categoria',
-  imports: [CommonModule, BotonRedirigirComponent, Card2Component],
+  imports: [CommonModule, BotonRedirigirComponent, Card2Component, ],
   templateUrl: './inicio-categoria.component.html',
 })
 export class InicioCategoriaComponent {

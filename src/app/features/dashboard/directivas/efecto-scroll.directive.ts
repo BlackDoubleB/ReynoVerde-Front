@@ -4,37 +4,49 @@ import { Directive, ElementRef, HostListener, OnDestroy } from '@angular/core';
   selector: '[appEfectoScroll]',
 })
 export class EfectoScrollDirective implements OnDestroy {
-  private observer: IntersectionObserver;
+  private observer!: IntersectionObserver;
   private lastScrollTop = 0; // Para detectar dirección de scroll
   private scrollingDown = false;
   private resizeObserver: ResizeObserver;
+  private alto = 0;
 
   constructor(private el: ElementRef) {
     this.resizeObserver = new ResizeObserver((entries) => {
+
       for (let entry of entries) {
-        const alto = entry.contentRect.height;
-        console.log('Nuevo alto:', alto);
+        this.alto = entry.contentRect.height;
+        this.activarConScroll();
       }
     });
 
     this.resizeObserver.observe(this.el.nativeElement);
+    this.activarConScroll();
+  }
+
+  activarConScroll() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
 
     this.observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (this.scrollingDown) {
+          if (this.scrollingDown ) {
             entry.target.classList.add('mostrarScroll');
           } else {
             entry.target.classList.remove('mostrarScroll');
           }
         });
       },
+
       {
-        rootMargin: '0px 0px 100px 0px',
+        rootMargin: `0px 0px ${this.alto/16}px 0px`,
       }
+      
     );
 
     this.observer.observe(this.el.nativeElement);
+    
   }
 
   @HostListener('window:scroll', [])
@@ -42,11 +54,14 @@ export class EfectoScrollDirective implements OnDestroy {
     const currentScroll =
       window.pageYOffset || document.documentElement.scrollTop;
     console.log('currentScroll', currentScroll);
-    this.scrollingDown = currentScroll > this.lastScrollTop; //Siempre compara el valor actual contra el anterior,En JavaScript (y TypeScript), las líneas de código se ejecutan en orden, una por una.
+    this.scrollingDown = currentScroll > this.lastScrollTop;
     this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   }
 
   ngOnDestroy(): void {
-    this.observer.disconnect();
+    this.observer?.disconnect();
+      this.resizeObserver?.unobserve(this.el.nativeElement);
   }
 }
+
+
