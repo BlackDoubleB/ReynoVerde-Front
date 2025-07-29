@@ -52,4 +52,17 @@ obtenerProductoFiltrado(
     })
   );
 }
+
+obtenerProductosPrincipales():Observable<Producto[]>{
+  return this._http.get<Producto[]>
+  ( `${this.URLbase}/api/producto/obtenerProductosPrincipales`,
+    { withCredentials: true }
+  ).pipe(
+    catchError(error => {
+      console.error('Error obteniendo productos', error);
+      return of([]);
+    })
+  );
+
+}
 }

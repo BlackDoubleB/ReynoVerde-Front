@@ -9,8 +9,8 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 })
 export class Card1Component {
   @Input() imagenUrl!: string;
-  @Input() titulo!: string;
-  @Input() precio!: string;
+  @Input() nombre!: string;
+  @Input() precio!: number;
   @Input() clasesExtras: string = '';
 
 }
