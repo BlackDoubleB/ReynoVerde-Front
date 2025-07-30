@@ -23,7 +23,7 @@ export default class PlantaSeccionComponent implements OnInit {
   categoriasSeleccionadasUrl: [string[], string] = [[], ''];
   nombreFiltro: string | null = null;
   mostrarFiltro = signal(false);
-
+  
   abrirFiltro() {
     this.mostrarFiltro.set(true);
     document.body.classList.add('overflow-hidden');
@@ -33,6 +33,8 @@ export default class PlantaSeccionComponent implements OnInit {
     this.mostrarFiltro.set(false);
     document.body.classList.remove('overflow-hidden');    
   }
+
+
 
   ngOnInit(): void {
     this._plantasService
@@ -52,7 +54,7 @@ export default class PlantaSeccionComponent implements OnInit {
     this.obtenerPlantas(this.categoriasSeleccionadasUrl[0], this.categoriasSeleccionadasUrl[1]);
   }
 
-
+  
   todoplanta = false;
   plantaporcategoria = false;
   plantapornombre = false;
@@ -105,6 +107,7 @@ export default class PlantaSeccionComponent implements OnInit {
    
     this.obtenerPlantas(categoriasNombre[0], categoriasNombre[1]);
   }
+
 
 
 }

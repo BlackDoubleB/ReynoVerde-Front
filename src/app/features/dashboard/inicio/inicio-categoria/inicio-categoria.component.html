@@ -1,20 +1,22 @@
 <div class="text-center flex flex-col gap-10 sm:gap-20 ">
   <div class="sm:mb-5">
     <h3 class="text-xl sm:text-3xl font-bold text-black dark:text-gray-100 pb-5" >Categorias</h3>
-    <p appEfectoScroll>Encuentra lo que buscas</p>
+    <p>Encuentra lo que buscas</p>
   </div>
 
 
-  <div class="w-screen bg-[#C1DCDC] dark:bg-[#1A2B2B] pt-10 relative left-1/2 -translate-x-1/2" appEfectoScroll>
-    <div class="max-w-[1200px] mx-auto w-full px-5">
-      <div class="flex flex-col items-center sm:flex-row sm:justify-between gap-5">
+  <div class="w-screen bg-[#C1DCDC] dark:bg-[#1A2B2B] pt-10 relative left-1/2 -translate-x-1/2 " >
+    <div class="mx-5 ">
+      <div class="max-w-[1200px] mx-auto w-full overflow-x-hidden  rounded-md">
+      
+      <div class="flex gap-5 md:flex-nowrap flex-wrap justify-center w-max  h-full anim_desplazamiento">
         @for(planta of imgCategoria; let i = $index; track planta.imagenUrl ) {
 
-        <div [ngClass]="{ 'sm:-top-20 relative': i !== 1 }" >
+        <div  >
           <app-card-2 
             [imagenUrl]="planta.imagenUrl"
-            [categoria]="planta.categoria"
-            [descripcion]="planta.descripcion"
+            [categoria]="planta.nombreCategoria"
+            [descripcion]="planta.descripcionCategoria"
           ></app-card-2>
 
         </div>
@@ -22,6 +24,7 @@
         <p>Aun no hay plantas</p>
         }
       </div>
+
 
       <div class="flex justify-center pt-5 py-10">
         <app-boton-redirigir
@@ -31,6 +34,7 @@
           ruta="/plantas/categorias"
         ></app-boton-redirigir>
       </div>
+    </div>
     </div>
   </div>
 </div>

@@ -110,3 +110,18 @@
         opacity: 1;
     }
  }
+
+ .anim_desplazamiento{
+        animation: desplazamiento 40s linear  infinite;
+ }
+ .anim_desplazamiento:hover {
+    animation-play-state: paused;
+}
+  @keyframes desplazamiento {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50.2%);
+        }
+      }

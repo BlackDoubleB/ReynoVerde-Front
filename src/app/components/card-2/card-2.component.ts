@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-2',
-    imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage],
   templateUrl: './card-2.component.html',
   styleUrl: './card-2.component.css'
 })

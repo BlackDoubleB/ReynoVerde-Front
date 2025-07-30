@@ -2,12 +2,11 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
 import { catchError, Observable, of } from 'rxjs';
-import { Categoria, Producto } from '../../../interfaces';
+import { Categoria, CategoriaProducto, Producto } from '../../../interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class ServiceDashboardService {
   private _http = inject(HttpClient);
   private URLbase = environment.apiURL;
@@ -25,44 +24,61 @@ export class ServiceDashboardService {
       );
   }
 
-obtenerProductoFiltrado(
-  categorias: string[] = [],
-  nombre: string | null = null
-): Observable<Producto[]> {
-  let params = new HttpParams();
-  
-  if (categorias.length > 0) {
-    // Para enviar múltiples valores de categoría (array)
-    categorias.forEach(cat => {
-      params = params.append('categoria', cat);
-    });
+  obtenerProductoFiltrado(
+    categorias: string[] = [],
+    nombre: string | null = null
+  ): Observable<Producto[]> {
+    let params = new HttpParams();
+
+    if (categorias.length > 0) {
+      // Para enviar múltiples valores de categoría (array)
+      categorias.forEach((cat) => {
+        params = params.append('categoria', cat);
+      });
+    }
+
+    if (nombre) {
+      params = params.append('nombre', nombre);
+    }
+
+    return this._http
+      .get<Producto[]>(
+        `${this.URLbase}/api/producto/obtenerProductosFiltrados`,
+        { params, withCredentials: true }
+      )
+      .pipe(
+        catchError((error) => {
+          console.error('Error obteniendo productos filtrados', error);
+          return of([]);
+        })
+      );
   }
 
-  if (nombre) {
-    params = params.append('nombre', nombre);
+  obtenerProductosPrincipales(): Observable<Producto[]> {
+    return this._http
+      .get<Producto[]>(
+        `${this.URLbase}/api/producto/obtenerProductosPrincipales`,
+        { withCredentials: true }
+      )
+      .pipe(
+        catchError((error) => {
+          console.error('Error obteniendo productos', error);
+          return of([]);
+        })
+      );
   }
 
-  return this._http.get<Producto[]>
-  ( `${this.URLbase}/api/producto/obtenerProductosFiltrados`,
-    { params, withCredentials: true }
-  ).pipe(
-    catchError(error => {
-      console.error('Error obteniendo productos filtrados', error);
-      return of([]);
-    })
-  );
-}
-
-obtenerProductosPrincipales():Observable<Producto[]>{
-  return this._http.get<Producto[]>
-  ( `${this.URLbase}/api/producto/obtenerProductosPrincipales`,
-    { withCredentials: true }
-  ).pipe(
-    catchError(error => {
-      console.error('Error obteniendo productos', error);
-      return of([]);
-    })
-  );
-
-}
+  obtenerCategoriaProductoInicio(): Observable<CategoriaProducto[]> {
+    return this._http
+      .get<CategoriaProducto[]>(
+        `${this.URLbase}/api/categoria/ObtenerCategoriaProductoInicio`,
+        { withCredentials: true }
+      )
+      .pipe(
+        catchError((error) => {
+          console.error('Error obteniendo categoria productos', error);
+          return of([]);
+        })
+      );
+  }
 }
