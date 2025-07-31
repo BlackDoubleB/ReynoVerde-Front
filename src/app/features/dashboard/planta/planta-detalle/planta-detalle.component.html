@@ -1,0 +1,52 @@
+<section class="mx-5">
+  <article class="flex gap-5">
+    <!-- Imagen del producto -->
+    <figure
+      class="max-w-[300px] w-full aspect-[3/4] relative rounded-2xl shadow-lg shadow-gray-500 dark:shadow-zinc-950 overflow-hidden"
+    >
+      <img
+        [ngSrc]="productoDetalle?.imagenUrl || 'assets/default-image.png'"
+        alt="{{ productoDetalle?.productoNombre }}"
+        fill
+      />
+    </figure>
+
+    <!-- Detalle del producto -->
+    <div class="flex flex-col gap-5">
+      <header>
+        <h1 class="dark:text-gray-100 font-bold text-xl sm:text-3xl text-black">
+          {{ productoDetalle?.productoNombre }}
+        </h1>
+      </header>
+
+      <div class="flex gap-5">
+
+        <div class="flex gap-2">
+          <h2 class="font-bold">Precio:</h2>
+          <p>S/. {{ productoDetalle?.precio | number : "1.2-2" }}</p>
+        </div>
+
+        <div class="flex gap-2">
+          <h2 class="font-bold">Stock:</h2>
+          <p>{{ productoDetalle?.cantidadStock }}</p>
+        </div>
+
+      </div>
+
+      <section class="border border-neutral-800 flex-1 ">
+        <div class="dark:bg-[#1A2B2B] p-5">
+            <h2 class="font-bold">Descripción:</h2>
+        </div>
+        <p class="p-5">{{ productoDetalle?.productoDescripcion }}</p>
+      </section>
+
+      <footer>
+        <button
+          class="mt-2 px-4 py-2 text-black dark:text-gray-100 font-medium hover:bg-gray-50 dark:bg-[#1A2B2B] dark:border-gray-200 rounded-2xl text-sm dark:hover:bg-[#131d1d] transition cursor-pointer border-neutral-800 "
+        >
+          Agregar al carrito
+        </button>
+      </footer>
+    </div>
+  </article>
+</section>

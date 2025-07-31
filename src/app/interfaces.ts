@@ -19,3 +19,13 @@ export interface CategoriaProducto {
   imagenUrl: string;
   nombreCategoria: string;
 }
+
+export interface ProductoCategoria{
+ id:string;
+ categoriaNombre: string; 
+ productoNombre:string;
+ productoDescripcion:string; 
+ imagenUrl:string; 
+ precio:number;
+ cantidadStock:number; 
+}

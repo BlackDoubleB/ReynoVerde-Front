@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
 import { catchError, Observable, of } from 'rxjs';
-import { Categoria, CategoriaProducto, Producto } from '../../../interfaces';
+import { Categoria, CategoriaProducto, Producto, ProductoCategoria } from '../../../interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -78,6 +78,20 @@ export class ServiceDashboardService {
         catchError((error) => {
           console.error('Error obteniendo categoria productos', error);
           return of([]);
+        })
+      );
+  }
+
+  obtenerProductoPorId(id:string|null):Observable<ProductoCategoria | null>{
+  
+   return this._http.get<ProductoCategoria>(
+        `${this.URLbase}/api/producto/obtenerProductoPorId/${id}`,
+        { withCredentials: true }
+      )
+      .pipe(
+        catchError((error) => {
+          console.error('Error obteniendo categoria productos', error);
+          return of(null);
         })
       );
   }

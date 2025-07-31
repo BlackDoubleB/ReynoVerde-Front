@@ -38,10 +38,12 @@
     <div class="w-full" appEfectoScroll>
     
       <app-card-1
+       [mostrarHover]="true" 
         clasesExtras="aspect-2/3 rounded-xs"  
         [imagenUrl]="planta.imagenUrl"
         [nombre]="planta.productoNombre"
         [precio]="planta.precio"
+        [id]="planta.id"
       >
       </app-card-1>
       

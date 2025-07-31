@@ -2,17 +2,20 @@
   [ngClass]="clasesExtras"
   class="group relative shadow-md shadow-gray-500 dark:shadow-zinc-950 overflow-hidden"
 >
+  @if(mostrarHover){
   <div
-    class="w-full h-full bg-neutral-900/45 translate-y-[-100%] absolute z-10 group-hover:translate-y-0 transition-transform duration-1000 flex items-center justify-center"
+    class="w-full h-full bg-neutral-900/45 translate-y-[-100%] absolute z-10 group-hover:translate-y-0 delay-300 transition-transform duration-1000 flex items-center justify-center"
   >
-
     <app-boton-redirigir
       clasesExtras=" sm:px-2 text-black  shadow-md
           dark:text-gray-100 bg-[#C1DCDC] hover:bg-[#b3cece] dark:bg-[#1A2B2B] dark:hover:bg-[#192222]  rounded-2xl hover:scale-105 transition-transform duration-200"
       texto="Ver más"
+      (click)="viewCardDetail(id)"
       ruta="/plantas/categorias"
     ></app-boton-redirigir>
   </div>
+  }
+
   <img [ngSrc]="imagenUrl" alt="imagen del card" fill />
 </div>
 
@@ -20,10 +23,3 @@
   <h4 class="text-black dark:text-gray-100 font-medium">{{ nombre }}</h4>
   <p>S/. {{ precio | number : "1.2-2" }}</p>
 </div>
-
-<style>
-  .imagen:hover .foco {
-    transform: scale(1);
-    transition: transform 0.3s ease;
-  }
-</style>

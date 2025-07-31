@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, Renderer2 } from '@angular/core';
 import { PortadaComponent } from '../../../components/portada/portada.component';
 import { Card1Component } from '../../../components/card-1/card-1.component';
 import { BotonRedirigirComponent } from '../../../components/botones/boton-redirigir/boton-redirigir.component';
@@ -10,17 +10,26 @@ import { Producto } from '../../../interfaces';
 
 @Component({
   selector: 'app-inicio',
-  imports: [PortadaComponent, Card1Component, BotonRedirigirComponent, InicioNosotrosComponent, InicioComentariosComponent, InicioCategoriaComponent],
-  templateUrl: './inicio.component.html'
+  imports: [
+    PortadaComponent,
+    Card1Component,
+    BotonRedirigirComponent,
+    InicioNosotrosComponent,
+    InicioComentariosComponent,
+    InicioCategoriaComponent
+  ],
+  templateUrl: './inicio.component.html',
 })
+
 export default class InicioComponent {
- private _obtenerProductosPrincipales = inject(ServiceDashboardService);
-  imgVendidas:Producto[] = []
+  private _obtenerProductosPrincipales = inject(ServiceDashboardService);
+  imgVendidas: Producto[] = [];
+  renderer = inject(Renderer2);
+  onHover = false;
 
-  ngOnInit(){
+  ngOnInit() {
     this._obtenerProductosPrincipales.obtenerProductosPrincipales().subscribe({
-    next: producto => this.imgVendidas = producto
-  })
+      next: (producto) => (this.imgVendidas = producto),
+    });
   }
-
 }

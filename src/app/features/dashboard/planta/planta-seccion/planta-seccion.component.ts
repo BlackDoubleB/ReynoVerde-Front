@@ -104,10 +104,9 @@ export default class PlantaSeccionComponent implements OnInit {
   }
 
   onCategoriasSeleccionadas(categoriasNombre: [string[], string]) {
-   
     this.obtenerPlantas(categoriasNombre[0], categoriasNombre[1]);
   }
 
-
+  
 
 }
