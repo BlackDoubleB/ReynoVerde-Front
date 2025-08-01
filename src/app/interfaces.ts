@@ -29,3 +29,10 @@ export interface ProductoCategoria{
  precio:number;
  cantidadStock:number; 
 }
+
+//
+export interface tipoLista{
+    beneficios:string[],
+    cuidados:string[]
+}
+
