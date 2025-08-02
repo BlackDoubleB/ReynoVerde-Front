@@ -1,12 +1,20 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  effect,
+  inject,
+  Input,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceDashboardService } from '../../services/service-dashboard.service';
 import { ProductoCategoria, tipoLista } from '../../../../interfaces';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-planta-detalle',
-  imports: [NgOptimizedImage, CommonModule],
+  imports: [NgOptimizedImage, CommonModule, FormsModule],
   templateUrl: './planta-detalle.component.html',
   styleUrl: './planta-detalle.component.css',
 })
@@ -25,6 +33,8 @@ export default class PlantaDetalleComponent implements OnInit {
     beneficios: [],
     cuidados: [],
   };
+
+  cantidad = signal<number>(0);
 
   ngOnInit(): void {
     const id: string | null =
@@ -67,4 +77,36 @@ export default class PlantaDetalleComponent implements OnInit {
       });
     }
   }
+
+  decrementar() {
+    if (this.cantidad() == 0 || this.cantidad == null) {
+      return;
+    }
+    this.cantidad.update((valor) => valor - 1 
+    );
+  }
+
+  incrementar() {
+    this.cantidad.update((valor) => valor + 2);
+  }
+
+  evitarCaracteres(event: KeyboardEvent) {
+    if (
+      event.key === '-' ||
+      event.code === 'Minus' ||
+      event.code === 'Equal' ||
+      event.key === '+'
+    ) {
+      event.preventDefault();
+    }
+     if (event.key === 'Backspace' && this.cantidad() == 0) 
+      {
+      event.preventDefault();
+    }
+  }
+
+  convertirANumero(event: Event): number {
+  const valor = (event.target as HTMLInputElement).value;
+  return valor === '' ? 0 : Number(valor) || 0;
+}
 }
