@@ -8,4 +8,5 @@ export default [
     loadChildren: () => import('./planta/planta.routes'),
     title: 'plantas',
   },
+  { path: 'carrito', loadComponent: () => import('./carrito/carrito.component') },
 ] as Routes;

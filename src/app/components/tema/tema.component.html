@@ -1,12 +1,12 @@
-<button class="cursor-pointer">
+<button class="flex cursor-pointer h-full items-center justify-center">
   <div
-    class="cuerpo bg-gray-200  w-[40px] h-5 rounded-2xl relative"
+    class=" bg-gray-200 w-[45px] h-6 rounded-2xl relative  border-[0.5px] border-neutral-500"
     (click)="mover()"
   >
     <div
-      class="bg-[#C1DCDC] dark:bg-[#1A2B2B] circulo rounded-full w-8 h-8
-       flex items-center justify-center absolute -top-[30%] z-10"
-      [ngClass]="{ esClaro: claro(), esOscuro: oscuro() }"
+      class="bg-[#C1DCDC] dark:bg-[#1A2B2B] esOcurso rounded-full w-8 
+       flex items-center justify-center absolute z-10 left-0 h-full border-r-[0.5px] border-neutral-500"
+      [ngClass]="{ esClaro: claro()}"
     >
       @if(claro()){
       <svg
@@ -40,21 +40,19 @@
   </div>
 </button>
 
+
+
+
+
+
 <style>
-  .circulo {
-    left: 0;
+  .esOcurso {
     transition: left 0.2s ease;
   }
 
-  .esOscuro {
-    left: calc(41px - 32px);
-    /* El borde izquierdo del elemento se mueve 20px dentro del ancho del contenedor  */
-    /* left: 50%; */
-    /* El borde izquierdo del elemento se mueve al 50% del ancho del contenedor padre. */
-  }
+ .esClaro {
+  left: calc(100% - 32px);
+}
 
-  .esClaro {
-    left: -1px;
-    /* El borde izquierdo del elemento se alinea con el borde izquierdo del contenedor padre.*/
-  }
+
 </style>

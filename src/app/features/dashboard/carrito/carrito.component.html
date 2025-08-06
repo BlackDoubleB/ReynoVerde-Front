@@ -1,0 +1,54 @@
+<div class="w-full max-w-[1200px]">
+  <div class="m-5 overflow-hidden">
+    <h1 class="dark:text-gray-100 text-3xl font-bold text-black pb-5">
+      Carrito
+    </h1>
+    <table
+      class="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400"
+    >
+      <thead
+        class=" text-gray-700 dark:text-gray-100 border border-neutral-800 bg-neutral-800 text-lg"
+      >
+        <tr>
+          <th scope="col" colspan="2" class="px-6 py-3 font-medium">Producto</th>
+          <th scope="col" class="px-6 py-3 font-medium">Precio</th>
+          <th scope="col" class="px-6 py-3 font-medium">Cantidad</th>
+          <th scope="col" class="px-6 py-3 font-medium">Total</th>
+        </tr>
+      </thead>
+
+
+      <tbody class="bg-neutral-850 border-[1px] border-neutral-800">
+        @for(datosCarrito of datosCarritoS; track datosCarrito.id){
+        <tr class="border-b-[1px] border-neutral-800">
+          <td class="px-6 py-4 max-w-[100px] overflow-hidden">
+            <img
+              [src]="datosCarrito.imagenUrl"
+              class="aspect-2/2 p-1 rounded-lg"
+            />
+          </td>
+          <td
+            scope="row"
+            class="px-6 py-4 dar:text-gray-200 whitespace-nowrap dark:text-white"
+          >
+            {{ datosCarrito.productoNombre }}
+          </td>
+
+          <td class="px-6 py-4 dark:text-gray-200">
+            {{ datosCarrito.precio }}
+          </td>
+
+          <td class="px-6 py-4 dark:text-gray-200">
+            {{ datosCarrito.cantidad }}
+          </td>
+
+          <td class="px-6 py-4 text-right dark:text-gray-200"></td>
+          
+        </tr>
+        }@empty {
+        <p>No hay campos</p>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -8,9 +8,14 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceDashboardService } from '../../services/service-dashboard.service';
-import { ProductoCategoria, tipoLista } from '../../../../interfaces';
+import {
+  plantaDetalle,
+  ProductoCategoria,
+  tipoLista,
+} from '../../../../interfaces';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CarritoStateService } from '../../services/carrito-state.service';
 
 @Component({
   selector: 'app-planta-detalle',
@@ -21,6 +26,7 @@ import { FormsModule } from '@angular/forms';
 export default class PlantaDetalleComponent implements OnInit {
   _rutaPlantaDetalla = inject(ActivatedRoute);
   _serviceDashboard = inject(ServiceDashboardService);
+  _serviceCarrito = inject(CarritoStateService);
 
   productoDetalle: ProductoCategoria | null = null;
 
@@ -33,6 +39,8 @@ export default class PlantaDetalleComponent implements OnInit {
     beneficios: [],
     cuidados: [],
   };
+  plantaDetalleEnviar!
+  : plantaDetalle;
 
   cantidad = signal<number>(0);
 
@@ -82,12 +90,11 @@ export default class PlantaDetalleComponent implements OnInit {
     if (this.cantidad() == 0 || this.cantidad == null) {
       return;
     }
-    this.cantidad.update((valor) => valor - 1 
-    );
+    this.cantidad.update((valor) => valor - 1);
   }
 
   incrementar() {
-    this.cantidad.update((valor) => valor + 2);
+    this.cantidad.update((valor) => valor + 1);
   }
 
   evitarCaracteres(event: KeyboardEvent) {
@@ -99,14 +106,26 @@ export default class PlantaDetalleComponent implements OnInit {
     ) {
       event.preventDefault();
     }
-     if (event.key === 'Backspace' && this.cantidad() == 0) 
-      {
+    if (event.key === 'Backspace' && this.cantidad() == 0) {
       event.preventDefault();
     }
   }
 
   convertirANumero(event: Event): number {
-  const valor = (event.target as HTMLInputElement).value;
-  return valor === '' ? 0 : Number(valor) || 0;
-}
+    const valor = (event.target as HTMLInputElement).value;
+    return valor === '' ? 0 : Number(valor) || 0;
+  }
+
+  agregarCarrito() {
+    if (this.productoDetalle) {
+      this.plantaDetalleEnviar = {
+        id: this.productoDetalle.id,
+        productoNombre: this.productoDetalle.productoNombre,
+        imagenUrl:this.productoDetalle.imagenUrl,
+        precio:this.productoDetalle.precio,
+        cantidad:this.cantidad()
+      };
+      this._serviceCarrito.agregarPlantaCarrito(this.plantaDetalleEnviar);
+    }
+  }
 }
