@@ -3,52 +3,70 @@
     <h1 class="dark:text-gray-100 text-3xl font-bold text-black pb-5">
       Carrito
     </h1>
-    <table
-      class="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400"
-    >
+    <table class="w-full text-center text-gray-500 dark:text-gray-400">
       <thead
-        class=" text-gray-700 dark:text-gray-100 border border-neutral-800 bg-neutral-800 text-lg"
+        class="text-gray-700 dark:text-gray-100 border border-neutral-800 bg-neutral-800 text-lg"
       >
         <tr>
-          <th scope="col" colspan="2" class="px-6 py-3 font-medium">Producto</th>
+          <th scope="col" colspan="2" class="px-6 py-3 font-medium text-left">
+            Producto
+          </th>
           <th scope="col" class="px-6 py-3 font-medium">Precio</th>
           <th scope="col" class="px-6 py-3 font-medium">Cantidad</th>
           <th scope="col" class="px-6 py-3 font-medium">Total</th>
         </tr>
       </thead>
 
-
       <tbody class="bg-neutral-850 border-[1px] border-neutral-800">
-        @for(datosCarrito of datosCarritoS; track datosCarrito.id){
+        @for(datosCarrito of _serviceCarrito.carritoPlantasS(); track datosCarrito.id)
+        {
         <tr class="border-b-[1px] border-neutral-800">
-          <td class="px-6 py-4 max-w-[100px] overflow-hidden">
+          <td class="px-6 py-3 max-w-[100px] overflow-hidden">
             <img
               [src]="datosCarrito.imagenUrl"
-              class="aspect-2/2 p-1 rounded-lg"
+              class="aspect-4/5 p-1 rounded-lg object-cover"
             />
           </td>
           <td
             scope="row"
-            class="px-6 py-4 dar:text-gray-200 whitespace-nowrap dark:text-white"
+            class="px-6 py-3 dar:text-gray-200 whitespace-nowrap dark:text-white text-left"
           >
             {{ datosCarrito.productoNombre }}
           </td>
 
-          <td class="px-6 py-4 dark:text-gray-200">
-            {{ datosCarrito.precio }}
+          <td class="px-6 py-3 dark:text-gray-200">
+            S/.  {{ datosCarrito.precio | number : "1.2-2"  }}
           </td>
 
-          <td class="px-6 py-4 dark:text-gray-200">
+          <td class="px-6 py-3 dark:text-gray-200">
             {{ datosCarrito.cantidad }}
           </td>
 
-          <td class="px-6 py-4 text-right dark:text-gray-200"></td>
+          <td class="px-6 py-3 dark:text-gray-200">
+            S/.  {{ datosCarrito.precio * datosCarrito.cantidad | number : "1.2-2" }}
+          </td>
+
           
         </tr>
+       
         }@empty {
-        <p>No hay campos</p>
+        <p>Aun no tiene productos en el carrito</p>
         }
       </tbody>
     </table>
+    <div class="w-full grid grid-cols-5 grid-rows-2 text-green-100 text-lg font-medium">
+
+      <div class="col-start-4 text-center">
+        <h4 class="pl-5 py-10">SubTotal:</h4>
+      </div>
+
+       <div class="col-start-5 text-center">
+         <p class="pl-5 py-10">S/. {{ _serviceCarrito.totalCarrito()| number : "1.2-2" }}</p>
+      </div>
+      
+      <div class="col-start-5 row-start-2 text-center pl-6">
+        <button class="py-2 cursor-pointer shadow-md bg-[#C1DCDC] dark:bg-[#1A2B2B] text-black dark:text-gray-100 w-fit hover:bg-[#b3cece] dark:hover:bg-[#192222] px-5 text-nowrap">FINALIZAR COMPRA </button>
+      </div>
+    </div>
   </div>
 </div>

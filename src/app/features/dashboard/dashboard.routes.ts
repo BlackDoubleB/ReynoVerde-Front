@@ -6,7 +6,7 @@ export default [
   {
     path: 'plantas',
     loadChildren: () => import('./planta/planta.routes'),
-    title: 'plantas',
+    title: 'Plantas',
   },
-  { path: 'carrito', loadComponent: () => import('./carrito/carrito.component') },
+  { path: 'carrito', loadComponent: () => import('./carrito/carrito.component'), title:'Carrito' },
 ] as Routes;
