@@ -21,9 +21,11 @@
 
       <div class="flex w-full flex-wrap justify-center sm:flex-nowrap sm:justify-between gap-5">
         @for(planta of imgVendidas; track planta.imagenUrl){
-        <div class="max-w-[192px] w-full ">
+        <div class="relative group max-w-[192px] w-full">
+           
           <app-card-1
             clasesExtras="aspect-3/5 border border-gray-50  dark:border-0 rounded-md"
+            [id]="planta.id"
             [imagenUrl]="planta.imagenUrl"
             [nombre]="planta.productoNombre"
             [precio]="planta.precio"

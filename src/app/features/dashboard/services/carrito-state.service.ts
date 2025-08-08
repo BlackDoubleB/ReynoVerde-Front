@@ -1,6 +1,5 @@
 import { computed, effect, Injectable, Signal, signal } from '@angular/core';
 import { plantaDetalle } from '../../../interfaces';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,9 +19,9 @@ export class CarritoStateService {
     }, 0);
   });
 
-  public totalCantidad: Signal<number>  = computed(() => {
+  public totalCantidad: Signal<number> = computed(() => {
     return this._carritoPlantasS().reduce((acumulador, planta) => {
-      return acumulador + planta.cantidad ;
+      return acumulador + planta.cantidad;
     }, 0);
   });
 
@@ -43,9 +42,32 @@ export class CarritoStateService {
   }
 
   agregarPlantaCarrito(planta: plantaDetalle) {
-    const carritoActual = this._carritoPlantasS();
-    const nuevoCarrito = [...carritoActual, planta];
-    this._carritoPlantasS.set(nuevoCarrito); // dispara el effect()
-  }
+    
+    if (planta.cantidad === 0) {
+      return;
+    } 
+    
+    const yaExiste = this._carritoPlantasS().some((p) => p.id === planta.id);
 
+    // map() no es solo para recorrer; su propósito principal es transformar cada elemento de un array y devolver un nuevo array con esos cambios.
+    if (yaExiste) {
+    this._carritoPlantasS.update(lista => {
+
+      return lista.map(p => {
+        if (p.id === planta.id) {
+          return {
+            ...p,
+            cantidad: planta.cantidad,
+            precio: planta.precio
+          };
+        }
+        return p;
+      });
+    });}
+    else {
+      const carritoActual = this._carritoPlantasS();
+      const nuevoCarrito = [...carritoActual, planta];
+      this._carritoPlantasS.set(nuevoCarrito);
+    }
+  }
 }

@@ -39,9 +39,7 @@ export default class PlantaDetalleComponent implements OnInit {
     beneficios: [],
     cuidados: [],
   };
-  plantaDetalleEnviar!
-  : plantaDetalle;
-
+  plantaDetalleEnviar!: plantaDetalle;
   cantidad = signal<number>(0);
 
   ngOnInit(): void {
@@ -84,6 +82,15 @@ export default class PlantaDetalleComponent implements OnInit {
         }
       });
     }
+    
+    const dataGuardada = localStorage.getItem('carrito');
+    if (dataGuardada) {
+      const plantas: plantaDetalle[] = JSON.parse(dataGuardada);
+      const item = plantas.find((planta) => planta.id === id);
+      if (item) {
+        this.cantidad.set(item.cantidad);
+      }
+    }
   }
 
   decrementar() {
@@ -121,9 +128,9 @@ export default class PlantaDetalleComponent implements OnInit {
       this.plantaDetalleEnviar = {
         id: this.productoDetalle.id,
         productoNombre: this.productoDetalle.productoNombre,
-        imagenUrl:this.productoDetalle.imagenUrl,
-        precio:this.productoDetalle.precio,
-        cantidad:this.cantidad()
+        imagenUrl: this.productoDetalle.imagenUrl,
+        precio: this.productoDetalle.precio,
+        cantidad: this.cantidad(),
       };
       this._serviceCarrito.agregarPlantaCarrito(this.plantaDetalleEnviar);
     }

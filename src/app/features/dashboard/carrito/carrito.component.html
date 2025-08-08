@@ -18,8 +18,8 @@
       </thead>
 
       <tbody class="bg-neutral-850 border-[1px] border-neutral-800">
-        @for(datosCarrito of _serviceCarrito.carritoPlantasS(); track datosCarrito.id)
-        {
+        @for(datosCarrito of _serviceCarrito.carritoPlantasS(); track
+        datosCarrito.id) {
         <tr class="border-b-[1px] border-neutral-800">
           <td class="px-6 py-3 max-w-[100px] overflow-hidden">
             <img
@@ -35,37 +35,78 @@
           </td>
 
           <td class="px-6 py-3 dark:text-gray-200">
-            S/.  {{ datosCarrito.precio | number : "1.2-2"  }}
+            S/. {{ datosCarrito.precio | number : "1.2-2" }}
           </td>
 
           <td class="px-6 py-3 dark:text-gray-200">
-            {{ datosCarrito.cantidad }}
+            <div class="flex items-center justify-center gap-5">
+              <!-- Botón de menos -->
+              <div>
+                <button
+                  type="button"
+                  class="cursor-pointer px-4 py-2 text-white font-bold shadow-md hover:bg-gray-50 dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] focus:outline-none border border-neutral-800"
+                  (click)="decrementar(datosCarrito.id)"
+                >
+                  −
+                </button>
+
+                <!-- Input de número -->
+                <input
+                  type="number"
+                  min="0"
+                  [value]="getCantidad(datosCarrito.id)"
+                  (input)="actualizarCantidad(datosCarrito.id, $event)"
+                  class="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-15 py-2 text-center bg-gray-100 text-black font-semibold shadow-md focus:outline-none border border-neutral-800"
+                />
+
+                <!-- Botón de más -->
+                <button
+                  type="button"
+                  (click)="incrementar(datosCarrito.id)"
+                  class="cursor-pointer px-4 py-2 text-white font-bold shadow-md focus:outline-none hover:bg-gray-50 dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] border border-neutral-800"
+                >
+                  +
+                </button>
+              </div>
+            <div class="cursor-pointer">
+               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 26 26"><path fill="currentColor" d="M11.5-.031c-1.958 0-3.531 1.627-3.531 3.594V4H4c-.551 0-1 .449-1 1v1H2v2h2v15c0 1.645 1.355 3 3 3h12c1.645 0 3-1.355 3-3V8h2V6h-1V5c0-.551-.449-1-1-1h-3.969v-.438c0-1.966-1.573-3.593-3.531-3.593zm0 2.062h3c.804 0 1.469.656 1.469 1.531V4H10.03v-.438c0-.875.665-1.53 1.469-1.53zM6 8h5.125c.124.013.247.031.375.031h3c.128 0 .25-.018.375-.031H20v15c0 .563-.437 1-1 1H7c-.563 0-1-.437-1-1zm2 2v12h2V10zm4 0v12h2V10zm4 0v12h2V10z"/></svg>
+            </div>
+            </div>
           </td>
 
           <td class="px-6 py-3 dark:text-gray-200">
-            S/.  {{ datosCarrito.precio * datosCarrito.cantidad | number : "1.2-2" }}
+            S/.
+            {{
+              datosCarrito.precio * getCantidad(datosCarrito.id)
+                | number : "1.2-2"
+            }}
           </td>
-
-          
         </tr>
-       
+
         }@empty {
         <p>Aun no tiene productos en el carrito</p>
         }
       </tbody>
     </table>
-    <div class="w-full grid grid-cols-5 grid-rows-2 text-green-100 text-lg font-medium">
-
+    <div
+      class="w-full grid grid-cols-5 grid-rows-2 text-green-100 text-lg font-medium"
+    >
       <div class="col-start-4 text-center">
         <h4 class="pl-5 py-10">SubTotal:</h4>
       </div>
 
-       <div class="col-start-5 text-center">
-         <p class="pl-5 py-10">S/. {{ _serviceCarrito.totalCarrito()| number : "1.2-2" }}</p>
+      <div class="col-start-5 text-center">
+        <p class="pl-5 py-10">
+          S/. {{ _serviceCarrito.totalCarrito() | number : "1.2-2" }}
+        </p>
       </div>
-      
+
       <div class="col-start-5 row-start-2 text-center pl-6">
-        <button class="py-2 cursor-pointer shadow-md bg-[#C1DCDC] dark:bg-[#1A2B2B] text-black dark:text-gray-100 w-fit hover:bg-[#b3cece] dark:hover:bg-[#192222] px-5 text-nowrap">FINALIZAR COMPRA </button>
+        <button
+          class="py-2 cursor-pointer shadow-md bg-[#C1DCDC] dark:bg-[#1A2B2B] text-black dark:text-gray-100 w-fit hover:bg-[#b3cece] dark:hover:bg-[#192222] px-5 text-nowrap"
+        >
+          FINALIZAR COMPRA
+        </button>
       </div>
     </div>
   </div>

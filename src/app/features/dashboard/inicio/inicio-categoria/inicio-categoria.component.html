@@ -12,7 +12,7 @@
       <div class="flex gap-5 md:flex-nowrap flex-wrap justify-center w-max  h-full anim_desplazamiento">
         @for(planta of imgCategoria; let i = $index; track planta.imagenUrl ) {
 
-        <div >
+        <div routerLink='/'>
           <app-card-2         
             [imagenUrl]="planta.imagenUrl"
             [categoria]="planta.nombreCategoria"

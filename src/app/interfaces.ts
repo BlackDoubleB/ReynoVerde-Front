@@ -42,3 +42,8 @@ export interface plantaDetalle {
   precio: number;
   cantidad: number;
 }
+
+export interface PlantaCantidad {
+  id: string;
+  cantidad: number;
+}
