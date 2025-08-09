@@ -1,82 +1,105 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, Signal, signal } from '@angular/core';
 import { CarritoStateService } from '../services/carrito-state.service';
 import { plantaDetalle } from '../../../interfaces';
 import { CommonModule } from '@angular/common';
+import { BotonRedirigirComponent } from "../../../components/botones/boton-redirigir/boton-redirigir.component";
 
 @Component({
   selector: 'app-carrito',
-  imports: [CommonModule],
+  imports: [CommonModule, BotonRedirigirComponent],
   templateUrl: './carrito.component.html',
   styleUrl: './carrito.component.css',
 })
-export default class CarritoComponent  {
+export default class CarritoComponent {
   _serviceCarrito = inject(CarritoStateService);
-   plantas = signal<{ id: string; cantidad: number}[]>([]);
- 
-ngOnInit() {
-  const dataGuardada = localStorage.getItem('carrito');
-  if (dataGuardada) {
-    const plantasGuardadas = JSON.parse(dataGuardada);
-    this.plantas.set(plantasGuardadas); // [{id, cantidad}, ...]
+  guardarLocal!: Signal<plantaDetalle[]>;
+
+  ngOnInit() {
+    this.guardarLocal = signal<plantaDetalle[]>(
+      this._serviceCarrito.carritoPlantasS()
+    );
   }
-}
 
+  incrementar(id: string) {
+    let plantaEncontrada = this.guardarLocal().find((p) => p.id === id);
+    if (plantaEncontrada) {
+      plantaEncontrada.cantidad = plantaEncontrada.cantidad + 1;
+      this._serviceCarrito.agregarPlantaCarrito(plantaEncontrada);
+    }
+  }
 
-incrementar(id: string) {
-  this.plantas.update(lista =>
-    lista.map(item =>
-      item.id === id
-        ? { ...item, cantidad: item.cantidad + 1 }
-        : item
-    )
-  );
-  this.guardarEnLocalStorage();
-}
+  decrementar(id: string) {
+    let plantaEncontrada = this.guardarLocal().find((p) => p.id === id);
+    if (plantaEncontrada) {
+      if (plantaEncontrada.cantidad <= 0 || plantaEncontrada.cantidad == null) {
+        return;
+      }
+      plantaEncontrada.cantidad = plantaEncontrada.cantidad - 1;
+      this._serviceCarrito.agregarPlantaCarrito(plantaEncontrada);
+    }
+  }
 
-decrementar(id: string) {
-  this.plantas.update(lista =>
-    lista.map(item =>
-      item.id === id && item.cantidad > 0
-        ? { ...item, cantidad: item.cantidad - 1 }
-        : item
-    )
-  );
-  this.guardarEnLocalStorage();
-}
-guardarEnLocalStorage() {
-  localStorage.setItem('carrito', JSON.stringify(this.plantas()));
-}
+  evitarCaracteres(id: string, event: KeyboardEvent) {
+    let plantaEncontrada = this.guardarLocal().find((p) => p.id === id);
+    if (plantaEncontrada) {
+      if (plantaEncontrada.id === id) {
+        if (
+          event.key === '-' ||
+          event.code === 'Minus' ||
+          event.code === 'Equal' ||
+          event.key === '+'
+        ) {
+          event.preventDefault();
+          return;
+        }
+        if (
+          event.key === 'Backspace' &&
+          plantaEncontrada.cantidad >= 0 &&
+          plantaEncontrada.cantidad < 10
+        ) {
+          event.preventDefault();
+          plantaEncontrada.cantidad = 0;
+          this._serviceCarrito.agregarPlantaCarrito(plantaEncontrada);
+          (event.target as HTMLInputElement).value = '0'; // Reponer en el input
+          return;
+        }
+      }
+    }
+  }
 
-//  evitarCaracteres(event: KeyboardEvent) {
-//     if (
-//       event.key === '-' ||
-//       event.code === 'Minus' ||
-//       event.code === 'Equal' ||
-//       event.key === '+'
-//     ) {
-//       event.preventDefault();
-//     }
-//     if (event.key === 'Backspace' && this.cantidad() == 0) {
-//       event.preventDefault();
-//     }
-//   }
-//    convertirANumero(event: Event): number {
-//     const valor = (event.target as HTMLInputElement).value;
-//     return valor === '' ? 0 : Number(valor) || 0;
-//   }
+  getCantidad(id: string) {
+    return (
+      this._serviceCarrito.carritoPlantasS().find((p) => p.id === id)
+        ?.cantidad || 0
+    );
+  }
+  setCantidad(id: string, event: Event) {
+    let plantaEncontrada = this.guardarLocal().find((p) => p.id === id);
 
+    if (plantaEncontrada) {
+      let valor = (event.target as HTMLInputElement).value;
+      if (valor === '') {
+        plantaEncontrada.cantidad = 0;
+        this._serviceCarrito.agregarPlantaCarrito(plantaEncontrada);
+        return;
+      }
+      if (Number(valor) >= 0) {
+        plantaEncontrada.cantidad = Number(valor);
+        this._serviceCarrito.agregarPlantaCarrito(plantaEncontrada);
+        return;
+      }
 
-actualizarCantidad(id: string, event: Event) {
-  const valor = Number((event.target as HTMLInputElement).value) || 0;
-  this.plantas.update(lista =>
-    lista.map(item =>
-      item.id === id ? { ...item, cantidad: valor } : item
-    )
-  );
-  this.guardarEnLocalStorage();
-}
+      plantaEncontrada.cantidad = 0;
+      this._serviceCarrito.agregarPlantaCarrito(plantaEncontrada);
+    }
+  }
 
-getCantidad(id: string) {
-  return this.plantas().find(p => p.id === id)?.cantidad || 0;
-}
+  eliminarPlanta(id: string) {
+    let plantaEncontrada: plantaDetalle | undefined  = this.guardarLocal().find(
+      (p) => p.id === id
+    );
+    if (plantaEncontrada) {
+      this._serviceCarrito.eliminarPlantaCarrito(plantaEncontrada);
+    }
+  }
 }

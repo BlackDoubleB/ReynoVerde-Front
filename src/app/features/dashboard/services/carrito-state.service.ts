@@ -41,30 +41,34 @@ export class CarritoStateService {
     });
   }
 
+  eliminarPlantaCarrito(planta: plantaDetalle) {
+    this._carritoPlantasS.update((listaOriginal) =>
+      listaOriginal.filter((p) => p.id !== planta.id)
+    );
+  }
   agregarPlantaCarrito(planta: plantaDetalle) {
-    
     if (planta.cantidad === 0) {
+      this.eliminarPlantaCarrito(planta);
       return;
-    } 
-    
+    }
+
     const yaExiste = this._carritoPlantasS().some((p) => p.id === planta.id);
 
     // map() no es solo para recorrer; su propósito principal es transformar cada elemento de un array y devolver un nuevo array con esos cambios.
     if (yaExiste) {
-    this._carritoPlantasS.update(lista => {
-
-      return lista.map(p => {
-        if (p.id === planta.id) {
-          return {
-            ...p,
-            cantidad: planta.cantidad,
-            precio: planta.precio
-          };
-        }
-        return p;
+      this._carritoPlantasS.update((lista) => {
+        return lista.map((p) => {
+          if (p.id === planta.id) {
+            return {
+              ...p,
+              cantidad: planta.cantidad,
+              precio: planta.precio,
+            };
+          }
+          return p;
+        });
       });
-    });}
-    else {
+    } else {
       const carritoActual = this._carritoPlantasS();
       const nuevoCarrito = [...carritoActual, planta];
       this._carritoPlantasS.set(nuevoCarrito);
