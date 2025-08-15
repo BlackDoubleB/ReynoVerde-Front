@@ -1,39 +1,38 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
-
 @font-face {
-  font-family: 'Poppins';
-  src: url('assets/fonts/Poppins/Poppins-Light.ttf') format('truetype');
+  font-family: "Poppins";
+  src: url("assets/fonts/Poppins/Poppins-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('assets/fonts/Poppins/Poppins-ExtraLight.ttf') format('truetype');
+  font-family: "Poppins";
+  src: url("assets/fonts/Poppins/Poppins-ExtraLight.ttf") format("truetype");
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('assets/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
+  font-family: "Poppins";
+  src: url("assets/fonts/Poppins/Poppins-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('assets/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+  font-family: "Poppins";
+  src: url("assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
   font-weight: 700;
   /* bold */
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('assets/fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+  font-family: "Poppins";
+  src: url("assets/fonts/Poppins/Poppins-ExtraBold.ttf") format("truetype");
   font-weight: 800;
   /* extra bold */
   font-style: normal;
@@ -60,8 +59,6 @@
   span {
     font-size: 20px;
   }
-
-
 }
 
 @media (max-width: 200px) {
@@ -82,46 +79,60 @@
   }
 }
 
-
-
-
-.mostrarFormFiltro{
+.mostrarFormFiltro {
   overflow: hidden;
 }
 
 /* Directivas */
 
- .mostrarScroll{
-    animation-name: mostrar;
-    animation-duration: 0.7s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
- }
-
- @keyframes mostrar{
-    from{
-        transform-origin: top;
-        scale: 0.95;
-        opacity: 0.2;
-       
-    }
-    to{
-        scale: 1;
-        opacity: 1;
-    }
- }
-
- .anim_desplazamiento{
-        animation: desplazamiento 40s linear  infinite;
- }
- .anim_desplazamiento:hover {
-    animation-play-state: paused;
+.mostrarScroll {
+  animation-name: mostrar;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
-  @keyframes desplazamiento {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50.2%);
-        }
-      }
+
+@keyframes mostrar {
+  from {
+    transform-origin: top;
+    scale: 0.95;
+    opacity: 0.2;
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+.anim_desplazamiento {
+  animation: desplazamiento 40s linear infinite;
+}
+.anim_desplazamiento:hover {
+  animation-play-state: paused;
+}
+
+.deslizamiento-carrito {
+  animation: desplazamiento-carrito 0.5s ease-in;
+}
+
+@keyframes desplazamiento-carrito {
+  0% {
+    transform: translateY(-2%);
+    
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+   
+    opacity: 1;
+  }
+}
+
+@keyframes desplazamiento {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50.2%);
+  }
+}

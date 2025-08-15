@@ -1,3 +1,3 @@
 export const environment = {
-    apiURL: 'pendiente'
+    apiURL: 'http://webapireynoverde-dev.us-east-1.elasticbeanstalk.com'
 };

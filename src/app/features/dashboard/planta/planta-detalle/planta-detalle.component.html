@@ -19,6 +19,7 @@
           [ngSrc]="productoDetalle?.imagenUrl || 'assets/default-image.png'"
           alt="{{ productoDetalle?.productoNombre }}"
           fill
+          class="object-cover"
         />
       </div>
     </div>
@@ -112,9 +113,10 @@
           <h2 class="font-bold text-xl">Descripción</h2>
         </div>
 
-        <div class="p-5">
+        <div class="p-5 flex flex-col gap-5">
           <p>{{ oraciones[0] }}</p>
-          <h3 class="font-bold text-lg! text-black dark:text-gray-100">
+          <div>
+            <h3 class="font-bold text-lg! text-black dark:text-gray-100">
             Cuidados:
           </h3>
           <ul>
@@ -146,8 +148,10 @@
             </li>
             }
           </ul>
+          </div>
 
-          <h3 class="font-bold text-lg! text-black dark:text-gray-100 pt-3">
+          <div>
+            <h3 class="font-bold text-lg! text-black dark:text-gray-100 pt-3">
             Beneficios:
           </h3>
           <ul>
@@ -179,6 +183,7 @@
             </li>
             }
           </ul>
+          </div>
         </div>
       </section>
     </div>
