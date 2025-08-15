@@ -1,3 +1,3 @@
 export const environment = {
-    apiURL: 'http://webapireynoverde-dev.us-east-1.elasticbeanstalk.com'
+    apiURL: 'https://webapireynoverde-b7g9hnc2d6f7brc8.canadacentral-01.azurewebsites.net'
 };
