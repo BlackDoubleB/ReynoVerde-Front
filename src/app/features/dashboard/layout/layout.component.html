@@ -1,7 +1,7 @@
-<div class="min-h-screen flex flex-col overflow-x-hidden">
-  <header class="my-5 flex flex-col items-center">
+<div class="min-h-screen flex flex-col">
+  <header class="py-5 mb-5 flex flex-col items-center sticky top-0 bg-neutral-50/95 dark:bg-neutral-900/90 border-b-[0.1px] border-neutral-200 dark:border-neutral-800 z-10">
     <nav
-      class="flex justify-between items-center flex-wrap max-w-[1200px] w-full px-5"
+      class="flex justify-between items-center flex-wrap max-w-[1200px] w-full px-5 z-50"
     >
       <ul
         class="flex gap-5 h-10 items-center justify-center text-black dark:text-white"
@@ -27,9 +27,14 @@
 
       <div class="flex items-center justify-center gap-5 ">
         <div class="relative">
-          <div class="absolute bg-orange-600 rounded-full px-1.5 text-xs -top-2 left-3 font-medium">{{_serviceCarrito.totalCantidad()}}</div>
+          <div class="absolute bg-orange-600 rounded-full px-1.5 text-xs -top-2 left-3 font-medium">
+            <p class="text-gray-100">
+              {{_serviceCarrito.totalCantidad()}}
+            </p>
+          </div>
           <a routerLink="/carrito">
             <svg
+            class="text-black dark:text-gray-100"
             xmlns="http://www.w3.org/2000/svg"
             width="25px"
             height="25px"
@@ -51,8 +56,8 @@
     </nav>
   </header>
 
-  <main class="flex  justify-center flex-1">
-    <div class="w-full max-w-[1200px]">
+  <main class="flex  justify-center flex-1 overflow-hidden">
+    <div class="w-full max-w-[1200px] ">
       <router-outlet></router-outlet>
     </div>
   </main>

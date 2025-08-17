@@ -4,7 +4,7 @@
   >
     <!-- Imagen del producto -->
     <div
-      class="w-full flex items-center justify-center relative border overflow-hidden border-neutral-800"
+      class="w-full flex items-center justify-center relative border overflow-hidden border-neutral-300 dark:border-neutral-800"
     >
       <div
         class="absolute inset-0 bg-cover bg-center blur-lg z-0"
@@ -33,7 +33,7 @@
         <h1 class="dark:text-gray-100 text-3xl font-bold text-black">
           {{ productoDetalle?.productoNombre }}
         </h1>
-        <p class="text-gray-400">
+        <p class="dark:text-gray-300">
           ({{ productoDetalle?.cantidadStock }}) Disponibles
         </p>
       </div>
@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <ul class="text-white list-disc list-outside pl-5 text-justify">
+      <ul class=" dark:text-gray-200 list-disc list-outside pl-5 text-justify">
         <li>Delivery en Lima Metropolitana y Callao.</li>
         <li>Envío de Plantas a domicilio para el mismo día.</li>
         <li>Producto Exclusivo de Reyno Verde.</li>
@@ -60,7 +60,8 @@
             <button
               type="button"
               (click)="decrementar()"
-              class="cursor-pointer px-4 py-2 text-white font-bold shadow-md hover:bg-gray-50 dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] focus:outline-none border border-neutral-800"
+              
+              class="px-4 py-2 font-bold shadow-md  text-black dark:text-gray-100 hover:bg-[#b3cece] bg-[#C1DCDC]  dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] transition cursor-pointer border border-neutral-300 dark:border-neutral-800"
             >
               −
             </button>
@@ -72,14 +73,14 @@
               [value]="cantidad()"
               (input)="cantidad.set(convertirANumero($event))"
               (keydown)="evitarCaracteres($event)"
-              class="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-15 py-2 text-center bg-gray-100 text-black font-semibold shadow-md focus:outline-none border border-neutral-800"
+              class="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-15 py-2 text-center bg-gray-100 text-black font-semibold shadow-md focus:outline-none border border-y-neutral-300 border-x-0 dark:border-neutral-800"
             />
 
             <!-- Botón de más -->
             <button
               type="button"
               (click)="incrementar()"
-              class="cursor-pointer px-4 py-2 text-white font-bold shadow-md focus:outline-none hover:bg-gray-50 dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] border border-neutral-800"
+              class="px-4 py-2 font-bold shadow-md  text-black dark:text-gray-100 hover:bg-[#b3cece] bg-[#C1DCDC]  dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] transition cursor-pointer border border-neutral-300 dark:border-neutral-800"
             >
               +
             </button>
@@ -87,7 +88,7 @@
         </div>
 
         <button
-          class="px-4 py-2 text-black dark:text-gray-100 font-medium hover:bg-gray-50 dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] transition cursor-pointer border border-neutral-800 flex items-center justify-center gap-2 whitespace-nowrap flex-1"
+          class="px-4 py-2 text-black dark:text-gray-100 font-medium hover:bg-[#b3cece] bg-[#C1DCDC]  dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] transition cursor-pointer border border-neutral-300 dark:border-neutral-800 flex items-center justify-center gap-2 whitespace-nowrap flex-1 shadow-md"
           (click)="agregarCarrito()"
         >
           AÑADIR AL CARRITO
@@ -108,7 +109,7 @@
 
     <!-- Detalle del producto -->
     <div class="flex flex-col md:col-span-2 md:row-start-2 text-justify">
-      <section class="border border-neutral-800">
+      <section class="border border-neutral-300 dark:border-neutral-800">
         <div class="dark:bg-[#1A2B2B] py-2 px-5">
           <h2 class="font-bold text-xl">Descripción</h2>
         </div>
