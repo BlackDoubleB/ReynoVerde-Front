@@ -1,4 +1,4 @@
-<section class="mx-5">
+<section class="mx-5 max-[450px]:break-all">
   <article
     class="grid md:grid-cols-2 md:grid-rows-[auto_auto] grid-cols-1 grid-rows--[auto_auto_auto] gap-5"
   >
@@ -40,7 +40,7 @@
 
       <div class="flex gap-5">
         <div class="flex gap-2">
-          <p class="text-4xl font-medium">
+          <p class="text-black dark:text-gray-200 text-4xl font-medium">
             S/. {{ productoDetalle?.precio | number : "1.2-2" }}
           </p>
         </div>
@@ -52,16 +52,16 @@
         <li>Producto Exclusivo de Reyno Verde.</li>
       </ul>
 
-      <div class="flex gap-5 flex-wrap">
-        <div class="flex gap-5 items-center font-bold">
-          <h2 class="text-xl">Cantidad:</h2>
-          <div class="flex items-center">
+      <div class="flex flex-col gap-5 w-full items-center justify-center">
+        <div class="flex items-center w-full  flex-row gap-5 font-bold max-[450px]:flex-col">
+          <h2 class="text-xl text-black dark:text-gray-200">Cantidad:</h2>
+          <div class="flex items-center max-[200px]:flex-col">
             <!-- Botón de menos -->
             <button
               type="button"
               (click)="decrementar()"
               
-              class="px-4 py-2 font-bold shadow-md  text-black dark:text-gray-100 hover:bg-[#b3cece] bg-[#C1DCDC]  dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] transition cursor-pointer border border-neutral-300 dark:border-neutral-800"
+              class="w-15 px-4 py-2 font-bold shadow-md  text-black dark:text-gray-100 hover:bg-[#b3cece] bg-[#C1DCDC]  dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] transition cursor-pointer border border-neutral-300 dark:border-neutral-800"
             >
               −
             </button>
@@ -80,7 +80,7 @@
             <button
               type="button"
               (click)="incrementar()"
-              class="px-4 py-2 font-bold shadow-md  text-black dark:text-gray-100 hover:bg-[#b3cece] bg-[#C1DCDC]  dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] transition cursor-pointer border border-neutral-300 dark:border-neutral-800"
+              class="w-15 px-4 py-2 font-bold shadow-md  text-black dark:text-gray-100 hover:bg-[#b3cece] bg-[#C1DCDC]  dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] transition cursor-pointer border border-neutral-300 dark:border-neutral-800"
             >
               +
             </button>
@@ -88,7 +88,7 @@
         </div>
 
         <button
-          class="px-4 py-2 text-black dark:text-gray-100 font-medium hover:bg-[#b3cece] bg-[#C1DCDC]  dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] transition cursor-pointer border border-neutral-300 dark:border-neutral-800 flex items-center justify-center gap-2 whitespace-nowrap flex-1 shadow-md"
+          class="px-4 py-2 text-black dark:text-gray-100 font-medium hover:bg-[#b3cece] bg-[#C1DCDC]  dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] transition cursor-pointer border border-neutral-300 dark:border-neutral-800 flex items-center justify-center gap-2 max-[450px]:text-wrap max-[450px]:flex-col text-nowrap w-full"
           (click)="agregarCarrito()"
         >
           AÑADIR AL CARRITO
@@ -110,14 +110,14 @@
     <!-- Detalle del producto -->
     <div class="flex flex-col md:col-span-2 md:row-start-2 text-justify">
       <section class="border border-neutral-300 dark:border-neutral-800">
-        <div class="dark:bg-[#1A2B2B] py-2 px-5">
-          <h2 class="font-bold text-xl">Descripción</h2>
+        <div class="bg-[#C1DCDC]  dark:bg-[#1A2B2B] py-2 px-5  border-b border-b-neutral-300 dark:border-neutral-800">
+          <h2 class="text-neutral-900 dark:text-gray-100 font-bold text-xl text-wrap!">Descripción</h2>
         </div>
 
         <div class="p-5 flex flex-col gap-5">
           <p>{{ oraciones[0] }}</p>
           <div>
-            <h3 class="font-bold text-lg! text-black dark:text-gray-100">
+            <h3 class="font-bold text-lg! text-neutral-900 dark:text-gray-100">
             Cuidados:
           </h3>
           <ul>
@@ -125,7 +125,7 @@
             = $index){
             <li class="flex gap-2">
               <svg
-                class="text-green-500 w-4 h-4 min-w-4 mt-1"
+                class="text-[#2d7979]  dark:text-green-500 w-4 h-4 min-w-4 mt-1"
                 xmlns="http://www.w3.org/2000/svg"
                 width="1rem"
                 height="1rem"
@@ -152,7 +152,7 @@
           </div>
 
           <div>
-            <h3 class="font-bold text-lg! text-black dark:text-gray-100 pt-3">
+            <h3 class="font-bold text-lg! text-neutral-900 dark:text-gray-100 pt-3">
             Beneficios:
           </h3>
           <ul>
@@ -160,7 +160,7 @@
             let idx = $index){
             <li class="flex gap-2">
               <svg
-                class="text-green-500 w-4 h-4 min-w-4 mt-1"
+                class="text-[#2d7979]  dark:text-green-500 w-4 h-4 min-w-4 mt-1"
                 xmlns="http://www.w3.org/2000/svg"
                 width="1rem"
                 height="1rem"

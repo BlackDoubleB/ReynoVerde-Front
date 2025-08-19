@@ -1,12 +1,13 @@
-<div class="w-full max-w-[1200px] h-full">
-  <div class="m-5 overflow-hidden h-full">
+<div class="w-full max-w-[1200px] h-full text-nowrap">
+  <div class="m-5  h-full ">
     @if(_serviceCarrito.carritoPlantasS().length>0){
-    <h1 class="dark:text-gray-100 text-3xl font-bold text-black pb-5">
+    <h1 class=" dark:text-gray-100 text-3xl font-bold text-black pb-5">
       Carrito
     </h1>
-    <table class="w-full text-center text-gray-500 dark:text-gray-400">
+  <div class="overflow-auto border border-neutral-200 dark:border-neutral-800 ">
+      <table class="w-full text-center text-gray-500 dark:text-gray-400 ">
       <thead
-        class="text-gray-700 dark:text-gray-100 border border-neutral-800 bg-neutral-800 text-lg"
+        class="border-b  bg-[#C1DCDC] text-black dark:text-gray-100 border-neutral-200  dark:border-neutral-800 dark:dark:bg-[#1A2B2B] text-lg "
       >
         <tr>
           <th scope="col" colspan="2" class="px-6 py-3 font-medium text-left">
@@ -18,14 +19,14 @@
         </tr>
       </thead>
 
-      <tbody class="bg-neutral-850 border-[1px] border-neutral-800">
+      <tbody class="bg-neutral-850  ">
         @for(datosCarrito of _serviceCarrito.carritoPlantasS(); track
         datosCarrito.id) {
-        <tr class="border-b-[1px] border-neutral-800">
-          <td class="px-6 py-3 max-w-[100px] overflow-hidden">
+        <tr class="">
+          <td class="px-6 py-3 min-w-[100px]  max-w-[100px] ">
             <img
               [src]="datosCarrito.imagenUrl"
-              class="aspect-4/5 p-1 rounded-lg object-cover"
+              class="w-full  aspect-4/5 p-1 rounded-lg object-cover "
             />
           </td>
           <td
@@ -42,10 +43,10 @@
           <td class="px-6 py-3 dark:text-gray-200">
             <div class="flex items-center justify-center gap-5">
               <!-- Botón de menos -->
-              <div>
+              <div class="flex">
                 <button
                   type="button"
-                  class="cursor-pointer px-4 py-2 text-white font-bold shadow-md hover:bg-gray-50 dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] focus:outline-none border border-neutral-800"
+                  class="px-4 py-2 text-black dark:text-gray-100 font-medium hover:bg-[#b3cece] bg-[#C1DCDC]  dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] transition cursor-pointer border border-neutral-300 dark:border-neutral-800 flex items-center justify-center gap-2 whitespace-nowrap flex-1 shadow-md"
                   (click)="decrementar(datosCarrito.id)"
                 >
                   −
@@ -58,14 +59,14 @@
                   (keydown)="evitarCaracteres(datosCarrito.id, $event)"
                   [value]="getCantidad(datosCarrito.id)"
                   (input)="setCantidad(datosCarrito.id, $event)"
-                  class="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-15 py-2 text-center bg-gray-100 text-black font-semibold shadow-md focus:outline-none border border-neutral-800"
+                  class="appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none w-15 py-2 text-center bg-gray-100 text-black font-semibold shadow-md focus:outline-none border border-y-neutral-300 border-x-0 dark:border-neutral-800"
                 />
 
                 <!-- Botón de más -->
                 <button
                   type="button"
                   (click)="incrementar(datosCarrito.id)"
-                  class="cursor-pointer px-4 py-2 text-white font-bold shadow-md focus:outline-none hover:bg-gray-50 dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] border border-neutral-800"
+                  class="px-4 py-2 text-black dark:text-gray-100 font-medium hover:bg-[#b3cece] bg-[#C1DCDC]  dark:bg-[#1A2B2B] dark:hover:bg-[#131d1d] transition cursor-pointer border border-neutral-300 dark:border-neutral-800 flex items-center justify-center gap-2 whitespace-nowrap flex-1 shadow-md"
                 >
                   +
                 </button>
@@ -75,6 +76,7 @@
                 (click)="eliminarPlanta(datosCarrito.id)"
               >
                 <svg
+                class=""
                   xmlns="http://www.w3.org/2000/svg"
                   width="1em"
                   height="1em"
@@ -103,28 +105,33 @@
         }
       </tbody>
     </table>
+  </div>
 
-    <div
-      class="w-full grid grid-cols-5 grid-rows-2 text-green-100 text-lg font-medium"
+   
+      <div
+      class="w-full flex flex-col md:flex-row pt-5 gap-5 md:gap-5 items-center justify-end md:grid grid-cols-5 grid-rows-1 text-black dark:text-gray-200 text-lg "
     >
-      <div class="col-start-4 text-center">
-        <h4 class="pl-5 py-10">SubTotal:</h4>
+      <div class="col-start-4 text-center md:pt-10 pt-5">
+        <h4 class="">SubTotal:</h4>
       </div>
 
-      <div class="col-start-5 text-center">
-        <p class="pl-5 py-10">
+      <div class="col-start-5 text-center md:justify-items-end md:pr-12 md:pt-10 ">
+        <p class="">
           S/. {{ _serviceCarrito.totalCarrito() | number : "1.2-2" }}
         </p>
       </div>
 
-      <div class="col-start-5 row-start-2 text-center pl-6">
+      
+    </div>
+    
+    <div class="text-center md:pl-6 pt-10 flex  justify-center md:justify-end font-medium">
         <button
-          class="py-2 cursor-pointer shadow-md bg-[#C1DCDC] dark:bg-[#1A2B2B] text-black dark:text-gray-100 w-fit hover:bg-[#b3cece] dark:hover:bg-[#192222] px-5 text-nowrap"
+          class="py-2 cursor-pointer shadow-md bg-[#C1DCDC] dark:bg-[#1A2B2B] text-black dark:text-gray-100 w-fit hover:bg-[#b3cece] dark:hover:bg-[#192222] px-5 "
         >
           FINALIZAR COMPRA
         </button>
       </div>
-    </div>
+   
     } @else{
     <div class="flex items-center justify-center h-full text-center deslizamiento-carrito">
      <div class="flex items-center  flex-col gap-7 w-3xl my-20">
