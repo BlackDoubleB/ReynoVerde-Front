@@ -1,6 +1,6 @@
 <div
   [ngClass]="clasesExtras"
-  class="group relative shadow-md shadow-gray-500 dark:shadow-zinc-950 cursor-pointer" (click)="viewCardDetail(id)"
+  class="group relative shadow-md shadow-gray-500 dark:shadow-zinc-950 cursor-pointer" (click)="viewCardDetail(id, nombre)"
 >
   <div class="w-full h-full absolute top-0 left-0 hover:bg-neutral-900/30 z-10 delay-75 transition-all ease-in"></div>
   <img [ngSrc]="imagenUrl" alt="imagen del card" fill class="object-cover"  />

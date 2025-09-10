@@ -1,10 +1,7 @@
 import {
   Component,
-  EventEmitter,
-  HostListener,
   inject,
   Input,
-  Output,
 } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
@@ -23,8 +20,8 @@ export class Card1Component {
   @Input() id!: string;
   @Input() clasesExtras: string = '';
 
-  viewCardDetail(cardId: string) {
-    this._router.navigate(['plantas', cardId, 'detalle']);
+  viewCardDetail(cardId: string, nombre: string) {
+    this._router.navigate(['plantas','planta', cardId, nombre]);
   }
 
   

@@ -25,6 +25,10 @@ export class CarritoStateService {
     }, 0);
   });
 
+  vaciarCarrito() {
+    this._carritoPlantasS.set([]);
+  }
+
   constructor() {
     const dataGuardada = localStorage.getItem('carrito');
     if (dataGuardada) {
@@ -54,7 +58,6 @@ export class CarritoStateService {
 
     const yaExiste = this._carritoPlantasS().some((p) => p.id === planta.id);
 
-    // map() no es solo para recorrer; su propósito principal es transformar cada elemento de un array y devolver un nuevo array con esos cambios.
     if (yaExiste) {
       this._carritoPlantasS.update((lista) => {
         return lista.map((p) => {

@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators,ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { RegistrarUsuario } from '../account.interface';
+import { TemaComponent } from "../../../components/tema/tema.component";
 @Component({
   selector: 'app-registro-usuario',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TemaComponent, RouterModule],
   templateUrl: './registro-usuario.component.html',
   styleUrl: './registro-usuario.component.css'
 })

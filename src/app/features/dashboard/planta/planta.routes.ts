@@ -8,9 +8,9 @@ export default [
   },
   
   {
-    path: ':id/detalle',
+    path: 'planta/:id/:slug',
     loadComponent: () => import('./planta-detalle/planta-detalle.component'),
-    title: 'Categorías'
+    
   },
 
   {

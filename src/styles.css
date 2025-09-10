@@ -65,16 +65,17 @@
   h1 {
     font-size: 20px;
   }
+  
 
   h3 {
     font-size: 16px;
   }
 
-  h4 {
+  h4, th {
     font-size: 13px;
   }
 
-  p,li {
+  p,li, button, td {
     font-size: 12px;
   }
 }

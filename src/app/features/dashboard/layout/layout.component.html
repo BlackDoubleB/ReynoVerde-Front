@@ -1,63 +1,136 @@
 <div class="min-h-screen flex flex-col">
-  <header class="py-5 mb-5 flex flex-col items-center sticky top-0 bg-neutral-50/95 dark:bg-neutral-900/90 border-b-[0.1px] border-neutral-200 dark:border-neutral-800 z-10">
+  <header
+    class="py-5 mb-5 flex flex-col items-center sticky top-0 bg-neutral-50/95 dark:bg-neutral-900/90 border-b-[0.1px] border-neutral-200 dark:border-neutral-800 z-20"
+  >
     <nav
-      class="flex justify-between items-center flex-wrap max-w-[1200px] w-full px-5 z-50"
+      class="flex justify-end sm:justify-between sm:items-center flex-wrap max-w-[1200px] w-full px-5 z-50"
     >
-      <ul
-        class="flex gap-5 h-10 items-center justify-center text-black dark:text-white"
-      >
-        <li>
-          <a routerLink="/inicio">Reyno Verde</a>
-        </li>
-        <li>
-          <a
-            routerLink="/inicio"
-            routerLinkActive="text-black dark:text-white font-bold"
-            >Inicio</a
-          >
-        </li>
-        <li>
-          <a
-            routerLink="/plantas"
-            routerLinkActive="text-black dark:text-white font-bold"
-            >Plantas</a
-          >
-        </li>
-      </ul>
+      <div class="flex justify-star flex-1 sm:items-center sm:gap-10">
+        <a class="text-black dark:text-white" routerLink="/inicio"
+          >Reyno Verde</a
+        >
 
-      <div class="flex items-center justify-center gap-5 ">
-        <div class="relative">
-          <div class="absolute bg-orange-600 rounded-full px-1.5 text-xs -top-2 left-3 font-medium">
-            <p class="text-gray-100">
-              {{_serviceCarrito.totalCantidad()}}
-            </p>
-          </div>
-          <a routerLink="/carrito">
+        <ul
+          class="gap-5 h-10 items-center justify-center text-black dark:text-white hidden sm:flex"
+        >
+          <li>
+            <a
+              routerLink="/inicio"
+              routerLinkActive="text-black dark:text-white font-bold"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/plantas"
+              routerLinkActive="text-black dark:text-white font-bold"
+              >Plantas</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex items-center justify-center gap-5">
+        <a routerLink="/carrito">
+          <div class="relative">
+            <div
+              class="absolute bg-orange-600 rounded-full px-1.5 text-xs -top-2 left-3 font-medium"
+            >
+              <p class="text-gray-100">
+                {{ _serviceCarrito.totalCantidad() }}
+              </p>
+            </div>
+
             <svg
-            class="text-black dark:text-gray-100"
+              class="text-black dark:text-gray-100"
+              xmlns="http://www.w3.org/2000/svg"
+              width="25px"
+              height="25px"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                d="M16.5 21a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3m-8 0a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3M3.71 5.4h15.214c1.378 0 2.373 1.27 1.995 2.548l-1.654 5.6C19.01 14.408 18.196 15 17.27 15H8.112c-.927 0-1.742-.593-1.996-1.452zm0 0L3 3"
+              />
+            </svg>
+          </div>
+        </a>
+        <div class="hidden sm:flex">
+          <app-tema></app-tema>
+        </div>
+        <div class="text-black dark:text-gray-100 cursor-pointer cerrarSesion" (click)="abrirCerrarSesion()">
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             width="25px"
             height="25px"
             viewBox="0 0 24 24"
           >
-            <path
+            <g
               fill="none"
               stroke="currentColor"
               strokeLinecap="round"
-              strokeLinejoin="round"
               strokeWidth="1.5"
-              d="M16.5 21a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3m-8 0a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3M3.71 5.4h15.214c1.378 0 2.373 1.27 1.995 2.548l-1.654 5.6C19.01 14.408 18.196 15 17.27 15H8.112c-.927 0-1.742-.593-1.996-1.452zm0 0L3 3"
+            >
+              <path
+                d="M9.002 7c.012-2.175.109-3.353.877-4.121C10.758 2 12.172 2 15 2h1c2.829 0 4.243 0 5.122.879C22 3.757 22 5.172 22 8v8c0 2.828 0 4.243-.878 5.121C20.242 22 18.829 22 16 22h-1c-2.828 0-4.242 0-5.121-.879c-.768-.768-.865-1.946-.877-4.121"
+              />
+              <path strokeLinejoin="round" d="M15 12H2m0 0l3.5-3M2 12l3.5 3" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="block sm:hidden abrir-menu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.5em"
+            height="1.5em"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill="currentColor"
+              d="M1 3v2h18V3zm0 8h18V9H1zm0 6h18v-2H1z"
             />
           </svg>
-          </a>
         </div>
-         <app-tema></app-tema> 
+
+        <div
+          class="sm:hidden absolute top-16 right-5 menu w-1/2 bg-neutral-950/95"
+        >
+          <div class="rounded shadow-lg border-[0.5px] border-neutral-400">
+            <ul
+              class="flex flex-col gap-5 py-5 px-5 text-black dark:text-white"
+            >
+              <div class="flex gap-5 border-b pb-5">
+                <h3 class="font-medium text-lg">Menú</h3>
+                <app-tema></app-tema>
+              </div>
+              <li>
+                <a
+                  routerLink="/inicio"
+                  routerLinkActive="text-black dark:text-white font-bold"
+                  >Inicio</a
+                >
+              </li>
+              <li>
+                <a
+                  routerLink="/plantas"
+                  routerLinkActive="text-black dark:text-white font-bold"
+                  >Plantas</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </nav>
   </header>
 
-  <main class="flex  justify-center flex-1 overflow-hidden">
-    <div class="w-full max-w-[1200px] ">
+  <main class="flex justify-center flex-1 overflow-hidden">
+    <div class="w-full max-w-[1200px]">
       <router-outlet></router-outlet>
     </div>
   </main>
@@ -166,3 +239,32 @@
     </div>
   </footer>
 </div>
+
+<!-- Ventana Emergente cerrar sesion -->
+@if(showCerrarSesion){
+<div
+class="fixed top-0 w-full h-full flex items-center justify-center bg-gray-500/80 dark:bg-neutral-950/80 z-[200] text-black dark:text-gray-200"
+>
+  <div
+    class="w-fit rounded-md bg-gray-200 dark:bg-neutral-950 border border-gray-400 dark:border-neutral-800 p-5 shadow-md shadow-neutral-850"
+  >
+    <div  class="flex flex-col gap-5">
+      <p>
+        ¿Esta seguro de cerrar sesión?
+      </p>
+
+      <div class="flex items-center justify-between gap-5 text-white">
+        <button class="bg-green-900 py-1 px-2 border rounded-xl border-neutral-500 flex-1 cursor-pointer" (click)="cancelarCierre()">
+          Cancelar
+        </button>
+        <button class="bg-red-700 py-1 px-2 border rounded-xl border-neutral-500 flex-1 cursor-pointer" (click)="cerrar_Sesion()">
+          Salir
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+}
+
+
+  

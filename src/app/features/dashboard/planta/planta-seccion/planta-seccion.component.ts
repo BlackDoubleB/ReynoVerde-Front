@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import BarraFiltroComponent from '../../../../components/barra-filtro/barra-filtro.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EfectoScrollDirective } from '../../directivas/efecto-scroll.directive';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-planta-seccion',
@@ -95,7 +96,7 @@ export default class PlantaSeccionComponent implements OnInit {
       queryParams.nombre = null;
     }
     console.log('queryParams', queryParams);
-
+    // this.title.setTitle(nombre && nombre.trim() ? `Plantas: ${nombre}` : 'Plantas');
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams: queryParams,

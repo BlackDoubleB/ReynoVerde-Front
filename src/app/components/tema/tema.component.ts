@@ -8,7 +8,7 @@ import { Component, computed, effect, OnInit, signal } from '@angular/core';
   styleUrl: './tema.component.css',
 })
 export class TemaComponent {
-  estado = signal(false); // false = claro, true = oscuro
+  estado = signal(true); // false = claro, true = oscuro
   claro = computed(() => !this.estado());
   oscuro = computed(() => this.estado());
 

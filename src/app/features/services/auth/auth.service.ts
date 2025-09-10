@@ -21,6 +21,14 @@ export class AuthStateService {
     return this._http.get<AccesoRespuesta>(this.URLbase, httpOptions).pipe(map(res=> res.valido));
     
   }
+
+   cerrarSesion(): Observable<string> {
+      const httpOptions = {
+        withCredentials: true,
+      };
+      return this._http.post<string>(`${environment.apiURL}/api/auth/cerrar-sesion`,{}, httpOptions);
+    }
+    
 }
 interface AccesoRespuesta {
   valido: boolean;

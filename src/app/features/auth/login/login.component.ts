@@ -3,9 +3,10 @@ import { AuthService } from '../auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { IniciarSesion } from '../account.interface';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { TemaComponent } from "../../../components/tema/tema.component";
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, TemaComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
