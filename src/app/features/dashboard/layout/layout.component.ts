@@ -9,7 +9,6 @@ import { finalize } from 'rxjs';
   selector: 'app-layout',
   imports: [RouterModule, TemaComponent, TemaComponent, RouterLink],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css',
 })
 export class LayoutComponent {
   showCerrarSesion = false;

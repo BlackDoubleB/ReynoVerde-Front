@@ -8,7 +8,6 @@ import { TemaComponent } from "../../../components/tema/tema.component";
   selector: 'app-registro-usuario',
   imports: [ReactiveFormsModule, TemaComponent, RouterModule],
   templateUrl: './registro-usuario.component.html',
-  styleUrl: './registro-usuario.component.css'
 })
 export default class RegistroUsuarioComponent {
   private readonly formBuilder = inject(FormBuilder);

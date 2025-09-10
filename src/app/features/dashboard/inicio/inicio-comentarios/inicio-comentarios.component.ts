@@ -5,7 +5,6 @@ import { ComentariosComponent } from '../../../../components/comentarios/comenta
   selector: 'app-inicio-comentarios',
   imports: [ComentariosComponent],
   templateUrl: './inicio-comentarios.component.html',
-  styleUrl: './inicio-comentarios.component.css'
 })
 export class InicioComentariosComponent {
   comentarios = [

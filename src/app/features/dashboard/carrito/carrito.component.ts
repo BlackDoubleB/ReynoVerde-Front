@@ -8,7 +8,6 @@ import { BotonRedirigirComponent } from "../../../components/botones/boton-redir
   selector: 'app-carrito',
   imports: [CommonModule, BotonRedirigirComponent],
   templateUrl: './carrito.component.html',
-  styleUrl: './carrito.component.css',
 })
 export default class CarritoComponent {
   _serviceCarrito = inject(CarritoStateService);
