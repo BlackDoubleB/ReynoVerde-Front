@@ -21,7 +21,6 @@ import { CarritoStateService } from '../../services/carrito-state.service';
   selector: 'app-planta-detalle',
   imports: [NgOptimizedImage, CommonModule, FormsModule],
   templateUrl: './planta-detalle.component.html',
-  styleUrl: './planta-detalle.component.css',
 })
 export default class PlantaDetalleComponent implements OnInit {
   _rutaPlantaDetalla = inject(ActivatedRoute);

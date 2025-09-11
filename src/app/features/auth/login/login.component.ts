@@ -8,7 +8,6 @@ import { TemaComponent } from "../../../components/tema/tema.component";
   selector: 'app-login',
   imports: [ReactiveFormsModule, RouterModule, TemaComponent],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
 })
 export default class LoginComponent {
   private readonly formBuilder = inject(FormBuilder);
