@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://reyno-verde-front-iyvu.vercel.app/sitemap.xml
