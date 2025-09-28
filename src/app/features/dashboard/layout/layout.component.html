@@ -3,7 +3,7 @@
     class="py-5 mb-5 flex flex-col items-center sticky top-0 bg-neutral-50/95 dark:bg-neutral-900/90 border-b-[0.1px] border-neutral-200 dark:border-neutral-800 z-20"
   >
     <nav
-      class="flex justify-end sm:justify-between sm:items-center flex-wrap max-w-[1200px] w-full px-5 z-50"
+      class="flex justify-end sm:justify-between gap-2 sm:items-center flex-wrap max-w-[1200px] w-full px-5 z-50"
     >
       <div class="flex justify-star flex-1 sm:items-center sm:gap-10">
         <a class="text-black dark:text-white" routerLink="/inicio"
@@ -62,7 +62,10 @@
         <div class="hidden sm:flex">
           <app-tema></app-tema>
         </div>
-        <div class="text-black dark:text-gray-100 cursor-pointer cerrarSesion" (click)="abrirCerrarSesion()">
+        <div
+          class="text-black dark:text-gray-100 cursor-pointer cerrarSesion"
+          (click)="abrirCerrarSesion()"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="25px"
@@ -83,7 +86,7 @@
           </svg>
         </div>
 
-        <div class="block sm:hidden abrir-menu">
+        <div class="block sm:hidden abrir-menu" (click)="toggleMenu()">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="1.5em"
@@ -97,6 +100,7 @@
           </svg>
         </div>
 
+        @if(menuAbierto){
         <div
           class="sm:hidden absolute top-16 right-5 menu w-1/2 bg-neutral-950/95"
         >
@@ -106,7 +110,9 @@
             >
               <div class="flex gap-5 border-b pb-5">
                 <h3 class="font-medium text-lg">Menú</h3>
-                <app-tema></app-tema>
+                <div class="max-[326px]:hidden">
+                  <app-tema></app-tema>
+                </div>
               </div>
               <li>
                 <a
@@ -122,9 +128,15 @@
                   >Plantas</a
                 >
               </li>
+              <li class="min-[326px]:hidden">
+                 
+                  <app-tema></app-tema>
+                
+              </li>
             </ul>
           </div>
         </div>
+        }
       </div>
     </nav>
   </header>
@@ -243,21 +255,25 @@
 <!-- Ventana Emergente cerrar sesion -->
 @if(showCerrarSesion){
 <div
-class="fixed top-0 w-full h-full flex items-center justify-center bg-gray-500/80 dark:bg-neutral-950/80 z-[200] text-black dark:text-gray-200"
+  class="fixed top-0 w-full h-full flex items-center justify-center bg-gray-500/80 dark:bg-neutral-950/80 z-[200] text-black dark:text-gray-200"
 >
   <div
-    class="w-fit rounded-md bg-gray-200 dark:bg-neutral-950 border border-gray-400 dark:border-neutral-800 p-5 shadow-md shadow-neutral-850"
+    class="w-fit rounded-md bg-gray-200 dark:bg-neutral-950 m-5 border border-gray-400 dark:border-neutral-800 p-5 shadow-md shadow-neutral-850"
   >
-    <div  class="flex flex-col gap-5">
-      <p>
-        ¿Esta seguro de cerrar sesión?
-      </p>
+    <div class="flex flex-col gap-5 text-center">
+      <p>¿Esta seguro de cerrar sesión?</p>
 
-      <div class="flex items-center justify-between gap-5 text-white">
-        <button class="bg-green-900 py-1 px-2 border rounded-xl border-neutral-500 flex-1 cursor-pointer" (click)="cancelarCierre()">
+      <div class="flex items-center justify-between gap-5 text-white max-[300px]:flex-col">
+        <button
+          class="bg-green-900 py-1 px-2 border rounded-xl border-neutral-500 flex-1 w-full cursor-pointer"
+          (click)="cancelarCierre()"
+        >
           Cancelar
         </button>
-        <button class="bg-red-700 py-1 px-2 border rounded-xl border-neutral-500 flex-1 cursor-pointer" (click)="cerrar_Sesion()">
+        <button
+          class="bg-red-700 py-1 px-2 border rounded-xl border-neutral-500 flex-1 w-full cursor-pointer"
+          (click)="cerrar_Sesion()"
+        >
           Salir
         </button>
       </div>
@@ -265,6 +281,3 @@ class="fixed top-0 w-full h-full flex items-center justify-center bg-gray-500/80
   </div>
 </div>
 }
-
-
-  

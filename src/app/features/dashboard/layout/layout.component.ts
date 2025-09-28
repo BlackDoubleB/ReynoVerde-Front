@@ -12,6 +12,7 @@ import { finalize } from 'rxjs';
 })
 export class LayoutComponent {
   showCerrarSesion = false;
+  menuAbierto = false;
   _serviceCarrito = inject(CarritoStateService);
   _authStateService = inject(AuthStateService);
   _router = inject(Router);
@@ -21,7 +22,9 @@ export class LayoutComponent {
     this.showCerrarSesion = true;
     document.body.classList.add('overflow-hidden'); // evita scroll del fondo
   }
-
+  toggleMenu(){
+    this.menuAbierto = !this.menuAbierto;
+  }
   cancelarCierre() {
     this.showCerrarSesion = false;
     document.body.classList.remove('overflow-hidden');
