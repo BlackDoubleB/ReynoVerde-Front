@@ -26,8 +26,6 @@ export default class LoginComponent {
           email: usuarioForm.email ?? '',
           password: usuarioForm.password ?? ''
         };
-        console.log('Formulario válido:', usuario);
-
         this.authService.iniciarSesion(usuario).subscribe({
           next: () => {
             this.router.navigate(['/inicio']);

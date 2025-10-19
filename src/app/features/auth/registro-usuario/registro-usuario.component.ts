@@ -26,7 +26,6 @@ export default class RegistroUsuarioComponent {
         email: usuarioForm.email ?? '',
         password: usuarioForm.password ?? ''
       };
-      console.log('Formulario válido:', usuario);
       this.registrarUsuario.registrarUsuario(usuario).subscribe({
         next: () => {
           this.router.navigate(['']);

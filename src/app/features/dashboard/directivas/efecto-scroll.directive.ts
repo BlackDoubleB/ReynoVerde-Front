@@ -53,7 +53,6 @@ export class EfectoScrollDirective implements OnDestroy {
   onWindowScroll() {
     const currentScroll =
       window.pageYOffset || document.documentElement.scrollTop;
-    console.log('currentScroll', currentScroll);
     this.scrollingDown = currentScroll > this.lastScrollTop;
     this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   }

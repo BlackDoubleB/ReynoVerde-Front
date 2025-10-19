@@ -95,7 +95,6 @@ export default class PlantaSeccionComponent implements OnInit {
     {
       queryParams.nombre = null;
     }
-    console.log('queryParams', queryParams);
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams: queryParams,
