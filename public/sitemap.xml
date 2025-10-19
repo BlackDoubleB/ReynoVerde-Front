@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Página de inicio -->
+
   <url>
     <loc>https://reyno-verde-front-iyvu.vercel.app/</loc>
     <lastmod>2025-09-10</lastmod>
@@ -9,7 +9,7 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Productos -->
+
   <url>
     <loc>https://reyno-verde-front-iyvu.vercel.app/productos</loc>
     <lastmod>2025-09-10</lastmod>
@@ -17,7 +17,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Carrito -->
+
   <url>
     <loc>https://reyno-verde-front-iyvu.vercel.app/carrito</loc>
     <lastmod>2025-09-10</lastmod>
@@ -25,7 +25,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- Contacto -->
+
   <url>
     <loc>https://reyno-verde-front-iyvu.vercel.app/contacto</loc>
     <lastmod>2025-09-10</lastmod>

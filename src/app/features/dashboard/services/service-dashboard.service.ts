@@ -31,7 +31,6 @@ export class ServiceDashboardService {
     let params = new HttpParams();
 
     if (categorias.length > 0) {
-      // Para enviar múltiples valores de categoría (array)
       categorias.forEach((cat) => {
         params = params.append('categoria', cat);
       });

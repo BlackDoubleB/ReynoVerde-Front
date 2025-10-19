@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostListener, OnDestroy } from '@angular/core';
 })
 export class EfectoScrollDirective implements OnDestroy {
   private observer!: IntersectionObserver;
-  private lastScrollTop = 0; // Para detectar dirección de scroll
+  private lastScrollTop = 0;
   private scrollingDown = false;
   private resizeObserver: ResizeObserver;
   private alto = 0;

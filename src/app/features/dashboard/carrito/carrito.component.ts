@@ -59,7 +59,7 @@ export default class CarritoComponent {
           event.preventDefault();
           plantaEncontrada.cantidad = 0;
           this._serviceCarrito.agregarPlantaCarrito(plantaEncontrada);
-          (event.target as HTMLInputElement).value = '0'; // Reponer en el input
+          (event.target as HTMLInputElement).value = '0';
           return;
         }
       }

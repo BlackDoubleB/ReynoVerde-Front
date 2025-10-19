@@ -96,7 +96,6 @@ export default class PlantaSeccionComponent implements OnInit {
       queryParams.nombre = null;
     }
     console.log('queryParams', queryParams);
-    // this.title.setTitle(nombre && nombre.trim() ? `Plantas: ${nombre}` : 'Plantas');
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams: queryParams,

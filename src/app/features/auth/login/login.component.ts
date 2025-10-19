@@ -12,7 +12,7 @@ import { TemaComponent } from "../../../components/tema/tema.component";
 export default class LoginComponent {
   private readonly formBuilder = inject(FormBuilder);
   private readonly authService = inject(AuthService);
-  router = inject(Router); // Asume que tienes un servicio para registrar usuarios
+  router = inject(Router);
   form = this.formBuilder.group({
     email: ['', { validators: [Validators.required, Validators.email] }],
     password: ['', { validators: [Validators.required] }]

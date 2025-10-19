@@ -49,7 +49,6 @@ export default class PlantaDetalleComponent implements OnInit {
       this._serviceDashboard.obtenerProductoPorId(id).subscribe((p) => {
         this.productoDetalle = p;
 
-        // Ahora que productoDetalle ya tiene datos, recién se puede extraer la descripción
         const descripcion = p?.productoDescripcion;
         this.oraciones =
           descripcion

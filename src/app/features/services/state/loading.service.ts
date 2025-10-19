@@ -8,7 +8,7 @@ export class LoadingService {
     private _loading: boolean = false;
 
     private susLoading = new Subject<boolean>()
-    public obsLoading = this.susLoading.asObservable();//está convirtiendo el Subject en un Observable que solo se puede leer (suscribirse), pero no emitir desde fuera.
+    public obsLoading = this.susLoading.asObservable();
     
 
     get loading(): boolean {

@@ -51,7 +51,6 @@ export default class BarraFiltroComponent {
   }
 
   ngOnInit() {
-    // Inicializar con las categorías seleccionadas que vienen del padre
     this.seleccionadas = [...this.categoriasSeleccionadasUrl[0]];
     this.nombre= this.categoriasSeleccionadasUrl[1];
   }
