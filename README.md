@@ -1,59 +1,156 @@
-# ReynoVerAngular
+# Reyno Verde — Frontend (Angular 19)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+Plataforma web para buscar y comprar plantas. Frontend en **Angular 19 + Tailwind v4**, que consume una **API .NET** (autenticación por **cookies**).
 
-## Development server
+---
 
-To start a local development server, run:
+## 📦 Stack
 
-```bash
-ng serve
-```
+- **Angular 19** (standalone components, signals, `NgOptimizedImage`)
+- **Angular Router** (lazy loading)
+- **Tailwind CSS v4**
+- **RxJS 7**
+- **SweetAlert2 / ngx-sweetalert2**
+- **API .NET** (login/registro, catálogo, categorías)
+- **Auth por cookies** (peticiones con `withCredentials: true`)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## ✨ Características
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Login/Registro** y guard de rutas privadas (`privateGuard`)
+- Listado de **plantas** con filtros por **categoría** y **nombre**
+- **Detalle** de producto (beneficios, cuidados, precio)
+- **Carrito** persistido en `localStorage`, subtotal dinámico
+- **Loader global** controlado por `LoadingService`
+- Directivas de efectos: `EfectoScrollDirective`, `EfectoDeslizamientoDirective`
+- Tema **claro/oscuro** con `signal` (`TemaComponent`)
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## ✅ Requisitos
 
-```bash
-ng generate --help
-```
+- **Node.js 18+**
+- **Angular CLI 19+**
+- API .NET disponible: https://github.com/BlackDoubleB/ReynoVerde-Api.git
+  
+---
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 🚀 Inicio Rápido
 
 ```bash
-ng test
+# 1) Clonar
+git clone <url-del-repo>
+cd reyno-ver-angular
+
+# 2) Instalar dependencias
+npm install
+
+# 3) Desarrollo (sirve en http://localhost:4200)
+npm start
+# o
+ng serve --open
+```
+---
+## 🧭 Rutas
+
+Las rutas bajo el **Layout** (`/`) están **protegidas** por `privateGuard` (requieren sesión vía cookie).
+
+| Ruta | Privada | Descripción |
+|---|:---:|---|
+| `/inicio` | ✅ | Home: portada, más vendidas, categorías. |
+| `/plantas` | ✅ | Listado de plantas con **filtros** (por nombre y categorías). |
+| `/plantas/planta/:id/:slug` | ✅ | **Detalle** de producto (precio, stock, cuidados, beneficios). |
+| `/plantas/categorias` | ✅ | Vista de categorías. |
+| `/carrito` | ✅ | Carrito con cantidades, subtotal, eliminar ítems. |
+| `/auth/login` | ❌ | Login (setea cookie; requiere `withCredentials`). |
+| `/auth/registro` | ❌ | Registro de usuario. |
+
+---
+
+## 🧰 Componentes destacados
+
+- **Filtro** (`BarraFiltroComponent`): nombre + categorías, emite selección y sincroniza con query params
+- **Cards** (`Card1Component`, `Card2Component`): producto/categoría con `NgOptimizedImage`
+- **Tema** (`TemaComponent`): toggle oscuro/claro (agrega `.dark` al `<html>`)
+- **Carga** (`CargaComponent`): pantalla de loading a pantalla completa
+
+---
+
+## 🧩 Estructura Principal
+
+```
+src/
+├─ app/
+│ ├─ components/ (UI reutilizable)
+│ │ ├─ barra-filtro/ (Filtro por nombre/categorías (emite selección))
+│ │ ├─ botones/boton-redirigir/ (estilizado para navegación)
+│ │ ├─ card-1/ card-2/ (Cards de producto/categoría (NgOptimizedImage))
+│ │ ├─ carga/ (Pantalla "loading" a pantalla completa)
+│ │ ├─ comentarios/ (Bloque de comentario/autor/fecha)
+│ │ ├─ portada/ (Hero de la página de inicio)
+│ │ └─ tema/ (Toggle claro/oscuro)
+│ │
+│ ├─ features/ 
+│ │ ├─ auth/ (Login/Registro y servicios de cuenta)
+│ │ │ ├─ login/ 
+│ │ │ ├─ auth.service.ts
+│ │ │ └─ account.interface.ts 
+│ │ ├─ core/ (Guards)
+│ │ │ └─ auth.guard.ts (privateGuard: fuerza sesión antes de entrar al layout)
+│ │ ├─ dashboard/ (Área logueada: inicio, carrito, plantas, detalle)
+│ │ │ ├─ layout/ 
+│ │ │ ├─ inicio/
+│ │ │ ├─ carrito/ 
+│ │ │ ├─ directivas/ 
+│ │ │ └─ planta/ 
+│ │ │ ├─ planta-seccion/ 
+│ │ │ ├─ planta-detalle/ 
+│ │ │ └─ categoria/ 
+│ │ └─ services/ (Servicios compartidos: estado/autenticación)
+│ │   └─ auth/ 
+│ │   └─ state/
+│ │ 
+│ ├─ app.component.html 
+│ ├─ app.routes.ts 
+│ ├─ app.config.ts 
+│ ├─ app.component.ts  
+│ └─ interfaces.ts 
+│
+├─ environments/
+│ ├─ environment.ts (Producción: API pública)
+│ └─ environment.development.ts (Desarrollo: API local)
+│
+├─ styles.css (Tailwind v4, fuentes Poppins, animaciones)
+├─ index.html
+└─ main.ts
 ```
 
-## Running end-to-end tests
+## 📸 Capturas de pantalla
 
-For end-to-end (e2e) testing, run:
+1. **Login**  
+   ![Login](docs/screenshots/01-auth-login.png)
 
-```bash
-ng e2e
-```
+2. **Registro**  
+   ![Registro](docs/screenshots/02-auth-register.png)
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+3. **Inicio**  
+   ![Inicio](docs/screenshots/03-inicio-home.png)
 
-## Additional Resources
+4. **Listado de Plantas**  
+   ![Listado de Plantas](docs/screenshots/04-plantas-listado.png)
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+5. **Filtro**  
+   ![Filtro](docs/screenshots/05-plantas-filtro.png)
+
+6. **Detalle de Planta**  
+   ![Detalle de Planta](docs/screenshots/06-plantas-detalle.png)
+
+7. **Carrito**  
+   ![Carrito](docs/screenshots/07-carrito.png)
+
+
+## 👩‍💻 Autora
+
+Reyna Blacido (BlackDoubleB)  
+Desarrolladora web en formación apasionada por la tecnología y el diseño.
