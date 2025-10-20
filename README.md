@@ -9,10 +9,7 @@ Plataforma web para buscar y comprar plantas. Frontend en **Angular 19 + Tailwin
 - **Angular 19** (standalone components, signals, `NgOptimizedImage`)
 - **Angular Router** (lazy loading)
 - **Tailwind CSS v4**
-- **RxJS 7**
-- **SweetAlert2 / ngx-sweetalert2**
 - **API .NET** (login/registro, catálogo, categorías)
-- **Auth por cookies** (peticiones con `withCredentials: true`)
 
 ---
 
@@ -51,31 +48,6 @@ npm start
 # o
 ng serve --open
 ```
----
-## 🧭 Rutas
-
-Las rutas bajo el **Layout** (`/`) están **protegidas** por `privateGuard` (requieren sesión vía cookie).
-
-| Ruta | Privada | Descripción |
-|---|:---:|---|
-| `/inicio` | ✅ | Home: portada, más vendidas, categorías. |
-| `/plantas` | ✅ | Listado de plantas con **filtros** (por nombre y categorías). |
-| `/plantas/planta/:id/:slug` | ✅ | **Detalle** de producto (precio, stock, cuidados, beneficios). |
-| `/plantas/categorias` | ✅ | Vista de categorías. |
-| `/carrito` | ✅ | Carrito con cantidades, subtotal, eliminar ítems. |
-| `/auth/login` | ❌ | Login (setea cookie; requiere `withCredentials`). |
-| `/auth/registro` | ❌ | Registro de usuario. |
-
----
-
-## 🧰 Componentes destacados
-
-- **Filtro** (`BarraFiltroComponent`): nombre + categorías, emite selección y sincroniza con query params
-- **Cards** (`Card1Component`, `Card2Component`): producto/categoría con `NgOptimizedImage`
-- **Tema** (`TemaComponent`): toggle oscuro/claro (agrega `.dark` al `<html>`)
-- **Carga** (`CargaComponent`): pantalla de loading a pantalla completa
-
----
 
 ## 🧩 Estructura Principal
 
@@ -125,6 +97,32 @@ src/
 ├─ index.html
 └─ main.ts
 ```
+---
+## 🧭 Rutas
+
+Las rutas bajo el **Layout** (`/`) están **protegidas** por `privateGuard` (requieren sesión vía cookie).
+
+| Ruta | Privada | Descripción |
+|---|:---:|---|
+| `/inicio` | ✅ | Home: portada, más vendidas, categorías. |
+| `/plantas` | ✅ | Listado de plantas con **filtros** (por nombre y categorías). |
+| `/plantas/planta/:id/:slug` | ✅ | **Detalle** de producto (precio, stock, cuidados, beneficios). |
+| `/plantas/categorias` | ✅ | Vista de categorías. |
+| `/carrito` | ✅ | Carrito con cantidades, subtotal, eliminar ítems. |
+| `/auth/login` | ❌ | Login (setea cookie; requiere `withCredentials`). |
+| `/auth/registro` | ❌ | Registro de usuario. |
+
+---
+
+## 🧰 Componentes destacados
+
+- **Filtro** (`BarraFiltroComponent`): nombre + categorías, emite selección y sincroniza con query params
+- **Cards** (`Card1Component`, `Card2Component`): producto/categoría con `NgOptimizedImage`
+- **Tema** (`TemaComponent`): toggle oscuro/claro (agrega `.dark` al `<html>`)
+- **Carga** (`CargaComponent`): pantalla de loading a pantalla completa
+
+---
+
 
 ## 📸 Capturas de pantalla
 
